@@ -1,0 +1,29 @@
+{
+  "name": "squid-router",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fontsource/geist-sans": "^5.1.0",
+    "framer-motion": "^12.0.0-alpha.0",
+    "geist": "^1.3.1",
+    "next": "14.2.11",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.3.0",
+    "react-responsive": "^10.0.0",
+    "squid-router": "file:"
+  },
+  "devDependencies": {
+    "@types/node": "22.5.5",
+    "@types/react": "18.3.7",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "5.6.2"
+  }
+}
