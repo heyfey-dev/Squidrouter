@@ -1,19 +1,32 @@
 "use client"
 
-
-
-
-
 import React, { useState } from 'react';
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { TbSettings2 } from "react-icons/tb";
-import { IoMdArrowBack} from "react-icons/io";
-import { IoMdInformationCircleOutline } from "react-icons/io";
-
+import { IoMdArrowBack, IoMdInformationCircleOutline } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa6";
 
+// Define types
+type Currency = 'BNB' | 'POL';
+type ViewType = 'swap' | 'history' | 'settings';
+
+interface CurrencySelectProps {
+  currency: Currency;
+  icon: React.ReactNode;
+}
+
+interface SwapFieldProps {
+  label: string;
+  currency: Currency;
+  icon: React.ReactNode;
+}
+
+interface SettingsContentProps {
+  onClose: () => void;
+}
+
 // CurrencySelect Component
-const CurrencySelect = ({ currency, icon }) => (
+const CurrencySelect: React.FC<CurrencySelectProps> = ({ currency, icon }) => (
   <div className="flex items-center bg-yellow-500 rounded-full px-2 py-1">
     {icon}
     <span className="ml-1 font-bold">{currency}</span>
@@ -22,8 +35,8 @@ const CurrencySelect = ({ currency, icon }) => (
 );
 
 // SwapField Component
-const SwapField = ({ label, currency, icon }) => {
-  const [value, setValue] = useState('');
+const SwapField: React.FC<SwapFieldProps> = ({ label, currency, icon }) => {
+  const [value, setValue] = useState<string>('');
 
   return (
     <div className="bg-gray-800 rounded-lg p-3 mb-2">
@@ -47,7 +60,7 @@ const SwapField = ({ label, currency, icon }) => {
 };
 
 // SwapContent Component
-const SwapContent = () => (
+const SwapContent: React.FC = () => (
   <>
     <SwapField label="Pay" currency="BNB" icon={<span className="text-yellow-500">▣</span>} />
     <div className="flex justify-center my-2">
@@ -61,7 +74,7 @@ const SwapContent = () => (
 );
 
 // HistoryContent Component
-const HistoryContent = () => (
+const HistoryContent: React.FC = () => (
   <div className="text-white">
     <h3 className="text-xl font-bold mb-4">Transaction History</h3>
     <ul className="space-y-2">
@@ -73,21 +86,21 @@ const HistoryContent = () => (
 );
 
 // SettingsContent Component
-const SettingsContent = ({ onClose }) => {
-  const [slippageMode, setSlippageMode] = useState('Auto');
-  const [customSlippage, setCustomSlippage] = useState(0);
-  const [degenMode, setDegenMode] = useState(false);
+const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
+  const [slippageMode, setSlippageMode] = useState<'Auto' | 'Custom'>('Auto');
+  const [customSlippage, setCustomSlippage] = useState<number>(0);
+  const [degenMode, setDegenMode] = useState<boolean>(false);
 
-  const handleSlippageModeChange = (mode) => {
+  const handleSlippageModeChange = (mode: 'Auto' | 'Custom') => {
     setSlippageMode(mode);
   };
 
-  const handleCustomSlippageChange = (value) => {
+  const handleCustomSlippageChange = (value: number) => {
     setCustomSlippage(Math.max(0, Math.min(5, value)));
   };
 
   return (
-    <div className="bg-gray-900 text-white p-4 rounded-lg">
+    <div className="bg-gray-900 bg-opacity-90 backdrop-blur-md text-white p-4 rounded-t-3xl absolute bottom-0 left-0 right-0">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -174,8 +187,8 @@ const SettingsContent = ({ onClose }) => {
 };
 
 // Main EnhancedSwap Component
-export default function EnhancedSwap() {
-  const [currentView, setCurrentView] = useState('swap');
+const EnhancedSwap: React.FC = () => {
+  const [currentView, setCurrentView] = useState<ViewType>('swap');
 
   const handleClose = () => {
     setCurrentView('swap');
@@ -193,8 +206,8 @@ export default function EnhancedSwap() {
   };
 
   return (
-    <div className="w-full flex justify-center items-center">
-      <div className="w-[40%] h-[90%] bg-gray-900 text-white p-4 rounded-3xl max-w-md mx-auto">
+    <div className="w-full h-screen flex justify-center items-center bg-gray-800">
+      <div className="w-full max-w-md h-[90%] bg-gray-900 text-white p-4 rounded-3xl mx-auto relative overflow-hidden">
         <div className="flex justify-between items-center mb-4">
           {currentView !== 'swap' ? (
             <button onClick={handleClose} className="text-gray-400">
@@ -213,8 +226,16 @@ export default function EnhancedSwap() {
           </div>
         </div>
         
-        {renderContent()}
+        {currentView !== 'settings' && renderContent()}
+        {currentView === 'settings' && (
+          <>
+            <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+            {renderContent()}
+          </>
+        )}
       </div>
     </div>
   );
-}
+};
+
+export default EnhancedSwap;

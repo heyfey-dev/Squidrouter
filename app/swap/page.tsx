@@ -1,14 +1,36 @@
+import React from "react";
+import Image from "next/image";
+import Bg_image from "/public/swap/squidBg.svg";
 import Sidebar from "../../components/swap/Sidebar"
 import Section from "../../components/swap/Section"
 
 
 
-const pagee: React.FC = () => {
+export default function Swap() {
   return (
-    <div>
-        <Sidebar/>
-        <Section/>
+    <div className=" relative min-h-screen m-0 p-0 bg-blue-200">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+      <Image
+          src={Bg_image}
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: 'cover',
+            position: 'absolute',
+            zIndex: 2,
+          }}
+          quality={100}
+          alt="Background"
+          priority
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex">
+        <Sidebar />
+        <Section />
+      </div>
     </div>
   );
-};
-export default pagee;
+}
