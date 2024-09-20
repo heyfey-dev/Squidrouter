@@ -5,6 +5,8 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { TbSettings2 } from "react-icons/tb";
 import { IoMdArrowBack, IoMdInformationCircleOutline } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa6";
+import { CiDollar } from "react-icons/ci";
+
 
 // Define types
 type Currency = 'BNB' | 'POL';
@@ -165,12 +167,10 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
           </label>
         </div>
         
-        <div className=" border-t border-b border-gray-700 py-3 flex items-center">
+        <div className=" border-t border-b border-gray-700 py-3 flex gap-2 items-center">
+          <CiDollar className="text-[#322F46]"/>
           <span>Buy crypto</span>
           <IoMdInformationCircleOutline className="ml-1 text-gray-400" />
-          <svg className="ml-auto" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
         </div>
       <div className="mt-4 text-xs text-gray-400 text-center">v3.0.0</div>
       </div>
