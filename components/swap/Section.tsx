@@ -5,7 +5,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { TbSettings2 } from "react-icons/tb";
 import { IoMdArrowBack } from "react-icons/io";
 import { AiFillQuestionCircle } from "react-icons/ai";
-import { FaChevronDown } from "react-icons/fa6";
+import { IoIosArrowRoundDown } from "react-icons/io";
 import { CiDollar } from "react-icons/ci";
 
 
@@ -37,7 +37,7 @@ const CurrencySelect: React.FC<CurrencySelectProps> = ({ currency, icon }) => (
   <div className="flex items-center bg-yellow-500 rounded-full px-2 py-1">
     {icon}
     <span className="ml-1 font-bold">{currency}</span>
-    <FaChevronDown size={16} className="ml-1" />
+    <IoIosArrowRoundDown size={16} className="ml-1" />
   </div>
 );
 
@@ -59,6 +59,9 @@ const SwapField: React.FC<SwapFieldProps> = ({ label, currency, icon }) => {
         placeholder="0"
       />
       <div className="flex justify-between text-gray-400 text-sm mt-2">
+        <image
+         href="/public/swap/cryptoSwap.svg"
+        />
         <span>$0</span>
         <span>Balance: 0 Max</span>
       </div>
@@ -71,10 +74,10 @@ const SwapContent: React.FC = () => (
   <>
     <SwapField label="Pay" currency="BNB" icon={<span className="text-yellow-500">▣</span>} />
     <div className="flex justify-center my-2">
-      <FaChevronDown size={24} className="text-gray-400" />
+      <IoIosArrowRoundDown size={24} className="text-gray-400" />
     </div>
-    <SwapField label="Receive" currency="POL" icon={<span className="text-purple-500">∞</span>} />
-    <button className="w-full bg-purple-600 text-white py-3 rounded-lg mt-4 font-semibold">
+    <SwapField label="Receive" currency="POL" icon={<span className="text-purple-300">∞</span>} />
+    <button className="w-full bg-[#a07fd0] text-white py-3 rounded-full mt-4 hover:bg-[#b793ed]">
       Connect
     </button>
   </>
@@ -211,22 +214,22 @@ const Section: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center bg-gray-800">
-      <div className="w-full max-w-sm h-[85%] bg-gray-900 text-white p-4 rounded-3xl mx-auto relative overflow-hidden">
+    <div className="w-full h-screen flex justify-center items-center border">
+      <div className="w-full max-w-sm h-[85%] bg-[#17191C] text-white p-4 rounded-3xl mx-auto relative overflow-hidden">
         <div className="flex justify-between items-center mb-4">
           {currentView !== 'swap' ? (
             <button onClick={handleClose} className="text-gray-400">
               <IoMdArrowBack size={24} />
             </button>
           ) : (
-            <h2 className="text-xl font-bold">Swap</h2>
+            <h2 className="text-3xl font-medium border">Swap</h2>
           )}
-          <div className="flex space-x-2">
-            <button onClick={() => setCurrentView('history')} className="text-gray-400">
-              <AiOutlineClockCircle size={20} />
+          <div className="flex space-x-1">
+            <button onClick={() => setCurrentView('history')} className="text-[#B1B6BF] w-14 h-8 flex justify-center items-center rounded-2xl bg-[#272d36]">
+              <AiOutlineClockCircle size={18} />
             </button>
-            <button onClick={() => setCurrentView('settings')} className="text-gray-400">
-              <TbSettings2 size={20} />
+            <button onClick={() => setCurrentView('settings')} className="text-[#B1B6BF] w-14 h-8 flex justify-center items-center rounded-2xl bg-[#272d36]">
+              <TbSettings2 size={18} />
             </button>
           </div>
         </div>

@@ -1,12 +1,26 @@
-"use client"
-
+"use client";
 
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 
-const CarouselRow = ({ logos, direction, speed }) => {
+interface Logo {
+  src: string;
+  alt: string;
+}
+
+interface CarouselRowProps {
+  logos: Logo[];
+  direction: "left" | "right";
+  speed: number;
+}
+
+const CarouselRow: React.FC<CarouselRowProps> = ({
+  logos,
+  direction,
+  speed,
+}) => {
   const controls = useAnimation();
-  const rowRef = useRef(null);
+  const rowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const animate = async () => {
@@ -50,16 +64,20 @@ const CarouselRow = ({ logos, direction, speed }) => {
         onHoverEnd={handleHoverEnd}
       >
         {logos.concat(logos).map((logo, index) => (
-          <img key={`${logo.alt}-${index}`} src={logo.src} alt={logo.alt} className="h-16 w-auto mx-4" />
+          <img
+            key={`${logo.alt}-${index}`}
+            src={logo.src}
+            alt={logo.alt}
+            className="h-16 w-auto mx-4"
+          />
         ))}
       </motion.div>
     </div>
   );
 };
 
-const MultiDirectionCarousel = () => {
-  // array for logos here----------
-  const logos = [
+const MultiDirectionCarousel: React.FC = () => {
+  const logos: Logo[] = [
     { src: "https://cdn.sanity.io/images/qbdchj8q/production/3ecbacdc7466e54718257a310e56e61a2a9e614b-394x66.svg", alt: "ChainFlip" },
     { src: "https://cdn.sanity.io/images/qbdchj8q/production/6e1221d0cc4ec4d1196263c2ed601a489dd76b14-323x66.svg", alt: "Exodus" },
     { src: "https://cdn.sanity.io/images/qbdchj8q/production/a3cab6e224f0b2a3b67efecefed0954808d67182-343x66.svg", alt: "Vertex" },
@@ -75,6 +93,7 @@ const MultiDirectionCarousel = () => {
     { src: "https://cdn.sanity.io/images/qbdchj8q/production/a7fe0df059d4c7572e82b2a4f095f585a1932506-213x66.svg", alt: "dydx" },
     { src: "https://cdn.sanity.io/images/qbdchj8q/production/e86f85f12e41dde953946d2ba7c95b7e5af1cf38-400x66.svg", alt: "Hyperliquid" },
   ];
+
   return (
     <div className="space-y-6">
       <CarouselRow logos={logos} direction="left" speed={50} />

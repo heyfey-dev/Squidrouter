@@ -1,28 +1,19 @@
 import React from "react";
 import Image from "next/image";
-// import Bg_image from "/public/swap/squidBg.svg";
-import Sidebar from "../../components/swap/Sidebar"
-import Section from "../../components/swap/Section"
+import Sidebar from "../../components/swap/Sidebar";
+import Section from "../../components/swap/Section";
 
-
-
-export default function Swap() {
+const Swap: React.FC = () => {
   return (
-    <div className=" relative min-h-screen m-0 p-0 bg-[#322F46]">
+    <div className="relative min-h-screen m-0 p-0 bg-[#322F46]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-      <img 
-          src="/swap/squidBg.svg" 
-          alt="Background" 
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: -1
-          }}
+        <Image
+          src="/swap/squidBg.svg"
+          alt="Background"
+          layout="fill"
+          objectFit="cover"
+          priority={true}
         />
       </div>
 
@@ -33,4 +24,6 @@ export default function Swap() {
       </div>
     </div>
   );
-}
+};
+
+export default Swap;
