@@ -1,15 +1,14 @@
 import Image from "next/image";
-
 import Black_Text from "../public/Squid_Text_Black.svg";
 import Axelar from "../public/Axelar.png";
 
 export default function Footer() {
   return (
-    <div className=" md:mx-14 my-10 mt-28 py-14 space-y-8 text-black md:rounded-[2rem] bg-gray-100 ">
-      {/* -----Form for smaller screen------- */}
+    <div className="md:mx-14 my-10 mt-28 py-14 space-y-8 text-black md:rounded-[2rem] bg-gray-100">
+      {/* -----Form for smaller screens------- */}
       <div className="mx-7 rounded-3xl shadow-sm md:hidden bg-white">
         <form className="p-5 space-y-14">
-          <h1 className="text-3xl">Sign up to Squids newsletter</h1>
+          <h1 className="text-3xl">Sign up to Squid's newsletter</h1>
           <div className="space-y-4">
             <input
               type="email"
@@ -28,13 +27,15 @@ export default function Footer() {
           <Image
             src={Black_Text}
             width={400}
-            alt="Black Text"
+            height={100}
+            alt="Squid Text Logo"
             className="hidden md:flex"
           />
           <Image
             src={Black_Text}
             width={500}
-            alt="Black Text"
+            height={100}
+            alt="Squid Text Logo"
             className="flex justify-center items-center md:hidden"
           />
         </div>
@@ -70,20 +71,20 @@ export default function Footer() {
 
       {/* --Axelar for smaller screen------ */}
       <div className="space-y-4 md:hidden border text-center">
-        <p className="text-lg text-grey-800 font-thin">Secured by Axelar</p>
+        <p className="text-lg text-gray-800 font-thin">Secured by Axelar</p> {/* Fixed typo */}
         <div className="flex justify-center">
-          <Image src={Axelar} width={300} alt="Axelar logo" />
+          <Image src={Axelar} width={300} height={100} alt="Axelar Logo" /> {/* Add height */}
         </div>
       </div>
 
       <div className="hidden md:flex ">
         <div className="w-1/2 p-6 space-y-4">
           <p className="text-lg">Secured by Axelar</p>
-          <Image src={Axelar} width={300} className="" />
+          <Image src={Axelar} width={300} height={100} alt="Axelar Logo" />
         </div>
         <div className="w-2/3 rounded-3xl shadow-lg hidden md:block">
           <form className="p-5 space-y-8">
-            <h1 className="text-3xl">Sign up to Squids newsletter</h1>
+            <h1 className="text-3xl">Sign up to Squid's newsletter</h1>
             <div className="flex gap-3">
               <input
                 type="email"
