@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Bg_image from "/public/swap/squidBg.svg";
+// import Bg_image from "/public/swap/squidBg.svg";
 import Sidebar from "../../components/swap/Sidebar"
 import Section from "../../components/swap/Section"
 
@@ -8,18 +8,13 @@ import Section from "../../components/swap/Section"
 
 export default function Swap() {
   return (
-    <div className=" relative min-h-screen m-0 p-0 bg-blue-200">
+    <div className=" relative min-h-screen m-0 p-0 bg-[#322F46]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-      <Image
-          src={Bg_image}
+        <Image
+          src="/public/swap/squidBg.svg"
           fill
-          sizes="100vw"
-          style={{
-            objectFit: 'cover',
-            position: 'absolute',
-            zIndex: 2,
-          }}
+          style={{ objectFit: 'cover' }}
           quality={100}
           alt="Background"
           priority
