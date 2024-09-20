@@ -100,8 +100,8 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="bg-gray-900 bg-opacity-90 backdrop-blur-md text-white p-4 rounded-t-3xl absolute bottom-0 left-0 right-0">
-      <div className="space-y-4">
+    <div className=" bg-opacity-90 backdrop-blur-sm text-white absolute bottom-0 m-4 left-0 right-0">
+      <div className="border space-y-2 p-4 bg-gray-800 rounded-3xl">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <span>Slippage</span>
@@ -161,23 +161,23 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
               checked={degenMode}
               onChange={() => setDegenMode(!degenMode)}
             />
-            <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-12 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#75DE6B]"></div>
           </label>
         </div>
         
-        <div className="flex items-center">
+        <div className=" border-t border-b border-gray-700 py-3 flex items-center">
           <span>Buy crypto</span>
           <IoMdInformationCircleOutline className="ml-1 text-gray-400" />
           <svg className="ml-auto" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
+      <div className="mt-4 text-xs text-gray-400 text-center">v3.0.0</div>
       </div>
       
-      <div className="mt-4 text-xs text-gray-400 text-center">v3.0.0</div>
       
       <button
-        className="w-full mt-4 py-3 bg-white text-black rounded-lg font-semibold"
+        className="w-full mt-4 py-3 bg-white text-black rounded-full shadow-md shadow-purple-400"
         onClick={onClose}
       >
         Close
@@ -187,7 +187,7 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
 };
 
 // Main EnhancedSwap Component
-const EnhancedSwap: React.FC = () => {
+const Section: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>('swap');
 
   const handleClose = () => {
@@ -207,7 +207,7 @@ const EnhancedSwap: React.FC = () => {
 
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gray-800">
-      <div className="w-full max-w-md h-[90%] bg-gray-900 text-white p-4 rounded-3xl mx-auto relative overflow-hidden">
+      <div className="w-full max-w-sm h-[85%] bg-gray-900 text-white p-4 rounded-3xl mx-auto relative overflow-hidden">
         <div className="flex justify-between items-center mb-4">
           {currentView !== 'swap' ? (
             <button onClick={handleClose} className="text-gray-400">
@@ -238,4 +238,4 @@ const EnhancedSwap: React.FC = () => {
   );
 };
 
-export default EnhancedSwap;
+export default Section;

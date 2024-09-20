@@ -11,13 +11,18 @@ export default function Swap() {
     <div className=" relative min-h-screen m-0 p-0 bg-[#322F46]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/public/swap/squidBg.svg"
-          fill
-          style={{ objectFit: 'cover' }}
-          quality={100}
-          alt="Background"
-          priority
+      <img 
+          src="/swap/squidBg.svg" 
+          alt="Background" 
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -1
+          }}
         />
       </div>
 
