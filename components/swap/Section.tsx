@@ -3,9 +3,14 @@
 import React, { useState } from 'react';
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { TbSettings2 } from "react-icons/tb";
-import { IoMdArrowBack, IoMdInformationCircleOutline } from "react-icons/io";
+import { IoMdArrowBack } from "react-icons/io";
+import { AiFillQuestionCircle } from "react-icons/ai";
 import { FaChevronDown } from "react-icons/fa6";
 import { CiDollar } from "react-icons/ci";
+
+
+import Slippage from "/public/swap/slippage.svg";
+import Star from "/public/swap/star.svg";
 
 
 // Define types
@@ -107,7 +112,7 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <span>Slippage</span>
-            <IoMdInformationCircleOutline className="ml-1 text-gray-400" />
+            <AiFillQuestionCircle className="ml-1 text-gray-400" />
           </div>
           <div className="flex space-x-2">
             <button
@@ -154,7 +159,7 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <span>Degen mode</span>
-            <IoMdInformationCircleOutline className="ml-1 text-gray-400" />
+            <AiFillQuestionCircle className="ml-1 text-gray-400" />
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
@@ -168,9 +173,9 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
         </div>
         
         <div className=" border-t border-b border-gray-700 py-3 flex gap-2 items-center">
-          <CiDollar className="text-[#322F46]"/>
+          <CiDollar className="text-[#9271C0]"/>
           <span>Buy crypto</span>
-          <IoMdInformationCircleOutline className="ml-1 text-gray-400" />
+          <AiFillQuestionCircle className="ml-1 text-gray-400" />
         </div>
       <div className="mt-4 text-xs text-gray-400 text-center">v3.0.0</div>
       </div>
