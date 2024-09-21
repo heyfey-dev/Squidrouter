@@ -120,22 +120,28 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
   };
 
   return (
-    <div className=" bg-opacity-90 backdrop-blur-sm text-white absolute bottom-0 m-4 left-0 right-0">
-      <div className="border space-y-2 p-4 bg-gray-800 rounded-3xl">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
+    <div className=" bg-opacity-90 backdrop-blur-lg text-white absolute bottom-0 m-4 left-0 right-0">
+      <div className="bg-opacity-40 outline-2 space-y-2 p-4 bg-gray-600 rounded-3xl">
+        <div className="flex items-center justify-between text-sm">
+          <div className="gap-2 flex items-center">
+          <Image
+           src={Slippage}
+           alt="Crypto Swap"
+           width={20}
+           height={20}
+          />
             <span>Slippage</span>
             <AiFillQuestionCircle className="ml-1 text-gray-400" />
           </div>
-          <div className="flex space-x-2">
+          <div className="border border-gray-700 pr-1 rounded-lg flex space-x-2">
             <button
-              className={`px-3 py-1 rounded ${slippageMode === 'Auto' ? 'bg-gray-700' : 'bg-gray-800'}`}
+              className={`border border-purple-500 px-2 py-1 text-xs rounded-sm ${slippageMode === 'Auto' ? 'bg-gray-700' : 'bg-gray-800'}`}
               onClick={() => handleSlippageModeChange('Auto')}
             >
               Auto
             </button>
             <button
-              className={`px-3 py-1 rounded ${slippageMode === 'Custom' ? 'bg-gray-700' : 'bg-gray-800'}`}
+              className={`px-1 text-xs rounded ${slippageMode === 'Custom' ? 'bg-gray-700' : 'bg-gray-800'}`}
               onClick={() => handleSlippageModeChange('Custom')}
             >
               Custom
@@ -170,7 +176,13 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
         )}
         
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex gap-1 items-center">
+          <Image
+           src={Star}
+           alt="Crypto Swap"
+           width={20}
+           height={20}
+          />
             <span>Degen mode</span>
             <AiFillQuestionCircle className="ml-1 text-gray-400" />
           </div>
@@ -190,7 +202,7 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
           <span>Buy crypto</span>
           <AiFillQuestionCircle className="ml-1 text-gray-400" />
         </div>
-      <div className="mt-4 text-xs text-gray-400 text-center">v3.0.0</div>
+      <div className="mt-4 text-xs text-gray-400 text-center">v3.0.2</div>
       </div>
       
       
