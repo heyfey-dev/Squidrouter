@@ -1,6 +1,10 @@
 "use client"
 
 import React, { useState } from 'react';
+import Image from "next/image";
+
+
+
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { TbSettings2 } from "react-icons/tb";
 import { IoMdArrowBack } from "react-icons/io";
@@ -11,6 +15,7 @@ import { CiDollar } from "react-icons/ci";
 
 import Slippage from "/public/swap/slippage.svg";
 import Star from "/public/swap/star.svg";
+import CryptoSwap from "/public/swap/cryptoSwap.svg"
 
 
 // Define types
@@ -55,14 +60,19 @@ const SwapField: React.FC<SwapFieldProps> = ({ label, currency, icon }) => {
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="w-full bg-transparent text-2xl text-purple-500 outline-none"
+        className="w-full bg-transparent text-3xl text-purple-500 outline-none"
         placeholder="0"
       />
-      <div className="flex justify-between text-gray-400 text-sm mt-2">
-        <image
-         href="/public/swap/cryptoSwap.svg"
-        />
-        <span>$0</span>
+      <div className="flex justify-between text-[#767B8F] text-sm mt-2">
+        <div className="flex items-center gap-1">
+          <Image
+           src={CryptoSwap}
+           alt="Crypto Swap"
+           width={15}
+           height={15}
+          />
+          <span>$0</span>
+        </div>
         <span>Balance: 0 Max</span>
       </div>
     </div>
