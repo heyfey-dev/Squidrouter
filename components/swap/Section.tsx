@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from "next/image";
-
+import Sidebar from "./Sidebar";
 
 
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -283,35 +283,47 @@ const Section: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center border">
-      <div className="w-full max-w-sm h-[85%] bg-[#17191C] text-white p-4 rounded-3xl mx-auto relative overflow-hidden">
-        <div className="flex justify-between items-center mb-4">
-          {currentView !== 'swap' ? (
-            <button onClick={handleClose} className="text-gray-400">
-              <IoMdArrowBack size={24} />
-            </button>
-          ) : (
-            <h2 className="text-3xl font-medium">Swap</h2>
-          )}
-          <div className="flex space-x-1">
-            <button onClick={() => setCurrentView('history')} className="text-[#B1B6BF] w-14 h-8 flex justify-center items-center rounded-2xl bg-[#272d36] hover:bg-gray-700">
-              <AiOutlineClockCircle size={18} />
-            </button>
-            <button onClick={() => setCurrentView('settings')} className="text-[#B1B6BF] w-14 h-8 flex justify-center items-center rounded-2xl bg-[#272d36] hover:bg-gray-500">
-              <TbSettings2 size={18} />
-            </button>
-          </div>
-        </div>
-        
-        {currentView !== 'settings' && renderContent()}
-        {currentView === 'settings' && (
-          <>
-            <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
-            {renderContent()}
-          </>
-        )}
-      </div>
+    <div className="w-full h-screen flex justify-center items-center">
+  <div className="w-full max-w-sm h-[85%] bg-[#17191C] text-white p-4 rounded-3xl mx-auto relative overflow-hidden">
+    
+    
+
+    {/* Settings and Clock Buttons */}
+    <div className="flex justify-end space-x-1">
+      <button
+        onClick={() => setCurrentView('history')}
+        className="text-[#B1B6BF] w-14 h-8 flex justify-center items-center rounded-2xl bg-[#272d36] hover:bg-gray-700"
+      >
+        <AiOutlineClockCircle size={18} />
+      </button>
+      <button
+        onClick={() => setCurrentView('settings')}
+        className="text-[#B1B6BF] w-14 h-8 flex justify-center items-center rounded-2xl bg-[#272d36] hover:bg-gray-500"
+      >
+        <TbSettings2 size={18} />
+      </button>
     </div>
+    
+    {/* Swap Heading */}
+    {currentView !== 'swap' ? (
+      <button onClick={handleClose} className="text-gray-400">
+        <IoMdArrowBack size={24} />
+      </button>
+    ) : (
+      <h2 className="text-3xl font-medium mb-4">Swap</h2>
+    )}
+
+    {/* Render content based on currentView */}
+    {currentView !== 'settings' && renderContent()}
+    {currentView === 'settings' && (
+      <>
+        <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+        {renderContent()}
+      </>
+    )}
+  </div>
+</div>
+
   );
 };
 
