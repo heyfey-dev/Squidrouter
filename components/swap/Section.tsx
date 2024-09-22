@@ -53,7 +53,7 @@ const SwapField: React.FC<SwapFieldProps> = ({ label, currency, icon }) => {
   const [value, setValue] = useState<string>('');
 
   return (
-    <div className="border-t border-4 border-blue-500 w-full p-3 mb-2">
+    <div className="border-t border-b border-gray-700 w-full p-3 mb-2">
       <div className="flex justify-between items-center mb-2">
         <span className="text-gray-400">{label}</span>
         <CurrencySelect currency={currency} icon={icon} />
@@ -87,7 +87,7 @@ const SwapContent: React.FC = () => (
   <>
     <SwapField label="Pay" currency="BNB" icon={<span className="text-yellow-500">▣</span>} />
     <div className="flex justify-center my-2">
-      <IoIosArrowRoundDown size={24} className="text-gray-400" />
+      <IoIosArrowRoundDown size={24} className="text-gray-200" />
     </div>
     <SwapField label="Receive" currency="POL" icon={<span className="text-purple-300">∞</span>} />
     <button className="w-full bg-[#a07fd0] text-white py-3 rounded-full mt-4 hover:bg-[#b793ed]">
@@ -308,7 +308,7 @@ const Section: React.FC = () => {
         <IoMdArrowBack size={24} />
       </button>
     ) : (
-      <h2 className="text-3xl text-gray-300 font-medium mb-4 border">Swap</h2>
+      <h2 className="text-2xl text-gray-300 font-medium px-4 mb-4 border">Swap</h2>
     )}
 
     {/* Render content based on currentView */}
