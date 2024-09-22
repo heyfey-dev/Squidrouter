@@ -5,7 +5,7 @@ import Section from "../../components/swap/Section";
 
 const Swap: React.FC = () => {
   return (
-    <div className="md:relative min-h-screen m-0 p-0 bg-[#322F46]">
+    <div className="md:relative min-h-screen m-0 p-0  bg-[#17191C] md:bg-[#322F46]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 hidden md:flex">
         <Image

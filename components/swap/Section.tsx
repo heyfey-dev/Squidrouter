@@ -53,7 +53,7 @@ const SwapField: React.FC<SwapFieldProps> = ({ label, currency, icon }) => {
   const [value, setValue] = useState<string>('');
 
   return (
-    <div className="bg-gray-800 rounded-lg p-3 mb-2">
+    <div className="border-t border-4 border-blue-500 w-full p-3 mb-2">
       <div className="flex justify-between items-center mb-2">
         <span className="text-gray-400">{label}</span>
         <CurrencySelect currency={currency} icon={icon} />
@@ -75,7 +75,8 @@ const SwapField: React.FC<SwapFieldProps> = ({ label, currency, icon }) => {
           />
           <span>$0</span>
         </div>
-        <span>Balance: 0 Max</span>
+        <p className="flex gap-2 items-center">Balance: 0<span className="bg-purple-200 p-1 px-3 text-xs rounded-full"> Max</span></p>
+        
       </div>
     </div>
   );
@@ -283,11 +284,8 @@ const Section: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
-  <div className="w-full max-w-sm h-[85%] bg-[#17191C] text-white p-4 rounded-3xl mx-auto relative overflow-hidden">
-    
-    
-
+    <div className="border-4 border-red-500 w-full md:h-screen md:flex md:justify-center items-center">
+  <div className="w-full md:max-w-sm mt-14 md:mt-0 md:h-[85%] bg-[#17191C] text-white rounded-3xl mx-auto relative overflow-hidden">
     {/* Settings and Clock Buttons */}
     <div className="flex justify-end space-x-1">
       <button
@@ -310,7 +308,7 @@ const Section: React.FC = () => {
         <IoMdArrowBack size={24} />
       </button>
     ) : (
-      <h2 className="text-3xl font-medium mb-4">Swap</h2>
+      <h2 className="text-3xl text-gray-300 font-medium mb-4 border">Swap</h2>
     )}
 
     {/* Render content based on currentView */}
