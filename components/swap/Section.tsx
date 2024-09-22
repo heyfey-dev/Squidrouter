@@ -40,61 +40,113 @@ interface SettingsContentProps {
 
 
 // CurrencySelect Component
-const CurrencySelect: React.FC<CurrencySelectProps> = ({ currency, icon }) => (
-  <div className="flex items-center bg-yellow-500 rounded-full px-2 py-1">
+const CurrencySelect = ({ currency, icon }: { currency: string; icon: React.ReactNode }) => (
+  <button className="flex items-center bg-[#272d36] text-[#B1B6BF] rounded-full px-3 py-1 cursor-pointer hover:bg-gray-700">
     {icon}
-    <span className="ml-1 font-bold">{currency}</span>
+    <span className="ml-2 font-semibold">{currency}</span>
     <IoIosArrowRoundDown size={16} className="ml-1" />
-  </div>
+  </button>
 );
 
-// SwapField Component
-const SwapField: React.FC<SwapFieldProps> = ({ label, currency, icon }) => {
-  const [value, setValue] = useState<string>('');
+// PayField Component
+const PayField: React.FC = () => {
+  const [payValue, setPayValue] = useState<string>('');
+  const [payCurrency, setPayCurrency] = useState<string>('BNB'); // Default currency
 
   return (
-    <div className="border-t border-b border-gray-700 w-full p-3 mb-2">
+    <div className="border-t border-b border-gray-700 w-full p-3 px-5 mb-4">
+      {/* Label */}
       <div className="flex justify-between items-center mb-2">
-        <span className="text-gray-400">{label}</span>
-        <CurrencySelect currency={currency} icon={icon} />
+        <span className="text-xs text-gray-400">Pay</span>
       </div>
+
+      {/* Currency Button */}
+      <CurrencySelect currency={payCurrency} icon={<span className="text-yellow-500">▣</span>} />
+
+      {/* Input Field */}
       <input
         type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        className="w-full bg-transparent text-3xl text-purple-500 outline-none"
+        value={payValue}
+        onChange={(e) => setPayValue(e.target.value)}
+        className="w-full bg-transparent text-3xl text-yellow-400 outline-none mt-2"
         placeholder="0"
       />
+
+      {/* Balance and Crypto Swap Icon */}
       <div className="flex justify-between text-[#767B8F] text-sm mt-2">
         <div className="flex items-center gap-1">
-          <Image
-           src={CryptoSwap}
-           alt="Crypto Swap"
-           width={15}
-           height={15}
-          />
+          <Image src={CryptoSwap} alt="Crypto Swap" width={15} height={15} />
           <span>$0</span>
         </div>
-        <p className="flex gap-2 items-center">Balance: 0<span className="bg-purple-200 p-1 px-3 text-xs rounded-full"> Max</span></p>
-        
+        <p className="flex gap-2 items-center">
+          Balance: 0<span className="bg-purple-200 p-1 px-3 text-xs rounded-full">Max</span>
+        </p>
       </div>
     </div>
   );
 };
 
-// SwapContent Component
+// ReceiveField Component
+const ReceiveField: React.FC = () => {
+  const [receiveValue, setReceiveValue] = useState<string>('');
+  const [receiveCurrency, setReceiveCurrency] = useState<string>('POL'); // Default currency
+
+  return (
+    <div className="border-t border-gray-700 w-full p-3 px-5">
+      {/* Label */}
+      <div className="flex justify-between items-center mb-2">
+        <span className="text-xs text-gray-400">Receive</span>
+      </div>
+
+      {/* Currency Button */}
+      <CurrencySelect currency={receiveCurrency} icon={<span className="text-purple-300">∞</span>} />
+
+      {/* Input Field */}
+      <input
+        type="text"
+        value={receiveValue}
+        onChange={(e) => setReceiveValue(e.target.value)}
+        className="w-full bg-transparent text-3xl text-purple-300 outline-none mt-2"
+        placeholder="0"
+      />
+
+      {/* Balance and Crypto Swap Icon */}
+      <div className="flex justify-between text-[#767B8F] text-sm mt-2">
+        <div className="flex items-center gap-1">
+          <Image src={CryptoSwap} alt="Crypto Swap" width={15} height={15} />
+          <span>$0</span>
+        </div>
+        <p className="flex gap-2 items-center">
+          Balance: 0<span className="bg-purple-200 p-1 px-3 text-xs rounded-full">Max</span>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+// Main Swap Component
 const SwapContent: React.FC = () => (
-  <div className="border">
-    <SwapField label="Pay" currency="BNB" icon={<span className="mtext-yellow-500">▣</span>} />
+  <div className="">
+    {/* Pay Section */}
+    <PayField />
+
+    {/* Arrow Divider */}
     <div className="flex justify-center my-2">
       <IoIosArrowRoundDown size={24} className="text-gray-200" />
     </div>
-    <SwapField label="Receive" currency="POL" icon={<span className="text-purple-300">∞</span>} />
-    <button className="w-full bg-[#a07fd0] text-white py-3 rounded-full mt-4 hover:bg-[#b793ed]">
-      Connect
-    </button>
+
+    {/* Receive Section */}
+    <ReceiveField />
+
+    {/* Connect Button */}
+    <div className="mt-4 md:mt-0 flex justify-center px-5">
+      <button className="w-full bg-[#a07fd0] text-white py-3 rounded-full  hover:bg-[#b793ed]">
+        Connect
+      </button>
+    </div>
   </div>
 );
+
 
 // HistoryContent Component
 const HistoryContent: React.FC = () => (
