@@ -84,8 +84,8 @@ const SwapField: React.FC<SwapFieldProps> = ({ label, currency, icon }) => {
 
 // SwapContent Component
 const SwapContent: React.FC = () => (
-  <>
-    <SwapField label="Pay" currency="BNB" icon={<span className="text-yellow-500">▣</span>} />
+  <div className="border">
+    <SwapField label="Pay" currency="BNB" icon={<span className="mtext-yellow-500">▣</span>} />
     <div className="flex justify-center my-2">
       <IoIosArrowRoundDown size={24} className="text-gray-200" />
     </div>
@@ -93,7 +93,7 @@ const SwapContent: React.FC = () => (
     <button className="w-full bg-[#a07fd0] text-white py-3 rounded-full mt-4 hover:bg-[#b793ed]">
       Connect
     </button>
-  </>
+  </div>
 );
 
 // HistoryContent Component
@@ -284,8 +284,8 @@ const Section: React.FC = () => {
   };
 
   return (
-    <div className="border-4 border-red-500 w-full md:h-screen md:flex md:justify-center items-center">
-  <div className="w-full md:max-w-sm mt-14 md:mt-0 md:h-[85%] bg-[#17191C] text-white rounded-3xl mx-auto relative overflow-hidden">
+    <div className="w-full md:h-screen md:flex md:justify-center items-center">
+  <div className="w-full md:max-w-sm mt-5 md:mt-0 md:h-[85%] bg-[#17191C] text-white rounded-3xl mx-auto md:pt-5 relative overflow-hidden">
     {/* Settings and Clock Buttons */}
     <div className="flex justify-end space-x-1">
       <button
@@ -308,7 +308,7 @@ const Section: React.FC = () => {
         <IoMdArrowBack size={24} />
       </button>
     ) : (
-      <h2 className="text-2xl text-gray-300 font-medium px-4 mb-4 border">Swap</h2>
+      <h2 className="text-2xl text-gray-300 font-medium px-5 pt-2 md:py-0 mb-2 md:mb-4">Swap</h2>
     )}
 
     {/* Render content based on currentView */}
