@@ -39,25 +39,38 @@ interface SettingsContentProps {
 }
 
 
+// Modal Component (Smaller and positioned above labels)
+const Modal = ({ message }: { message: string }) => (
+  <div className="absolute top-[-27px] -left-1 bg-[#2C2F36] rounded-2xl w-fit p-1 px-3 text-gray-400 z-10 shadow-xl">
+    <h2 className="text-xs font-semibold">{message}</h2>
+  </div>
+);
+
 // CurrencySelect Component
 const CurrencySelect = ({ currency, icon }: { currency: string; icon: React.ReactNode }) => (
-  <button className="flex items-center bg-[#272d36] text-[#B1B6BF] rounded-full px-3 py-1 cursor-pointer hover:bg-gray-700">
+  <div className="flex items-center bg-[#272d36] text-[#B1B6BF] rounded-full px-3 py-1 cursor-pointer hover:bg-gray-700">
     {icon}
     <span className="ml-2 font-semibold">{currency}</span>
     <IoIosArrowRoundDown size={16} className="ml-1" />
-  </button>
+  </div>
 );
 
 // PayField Component
 const PayField: React.FC = () => {
   const [payValue, setPayValue] = useState<string>('');
   const [payCurrency, setPayCurrency] = useState<string>('BNB'); // Default currency
+  const [isPayModalOpen, setIsPayModalOpen] = useState<boolean>(false); // Modal state
 
   return (
-    <div className="border-t border-b border-gray-700 w-full p-3 px-5 mb-4">
-      {/* Label */}
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-xs text-gray-400">Pay</span>
+    <div className="relative border-t border-b border-gray-700 w-full px-4 py-2">
+      {/* Label with Modal */}
+      <div
+        className="relative flex justify-between items-center mb-2 cursor-pointer "
+        onMouseEnter={() => setIsPayModalOpen(true)}
+        onMouseLeave={() => setIsPayModalOpen(false)}
+      >
+        <span className="w-fit hover:bg-[#2C2F36] p-1 rounded-2xl text-xs text-gray-400">Pay</span>
+        {isPayModalOpen && <Modal message="Select payment method" />}
       </div>
 
       {/* Currency Button */}
@@ -74,8 +87,8 @@ const PayField: React.FC = () => {
 
       {/* Balance and Crypto Swap Icon */}
       <div className="flex justify-between text-[#767B8F] text-sm mt-2">
-        <div className="flex items-center gap-1">
-          <Image src={CryptoSwap} alt="Crypto Swap" width={15} height={15} />
+        <div className="flex items-center gap-1 hover:bg-[#2C2F36] px-2 rounded-2xl cursor-pointer">
+          <Image src={CryptoSwap} alt="Crypto Swap" width={17} height={17} />
           <span>$0</span>
         </div>
         <p className="flex gap-2 items-center">
@@ -90,12 +103,18 @@ const PayField: React.FC = () => {
 const ReceiveField: React.FC = () => {
   const [receiveValue, setReceiveValue] = useState<string>('');
   const [receiveCurrency, setReceiveCurrency] = useState<string>('POL'); // Default currency
+  const [isReceiveModalOpen, setIsReceiveModalOpen] = useState<boolean>(false); // Modal state
 
   return (
-    <div className="border-t border-gray-700 w-full p-3 px-5">
-      {/* Label */}
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-xs text-gray-400">Receive</span>
+    <div className="relative border-t border-gray-700 w-full p-3 px-4">
+      {/* Label with Modal */}
+      <div
+        className="relative flex justify-between items-center mb-2 py-1"
+        onMouseEnter={() => setIsReceiveModalOpen(true)}
+        onMouseLeave={() => setIsReceiveModalOpen(false)}
+      >
+        <span className="text-xs text-gray-500 font-medium">Receive</span>
+        {isReceiveModalOpen && <Modal message="Select recipient" />}
       </div>
 
       {/* Currency Button */}
@@ -139,14 +158,13 @@ const SwapContent: React.FC = () => (
     <ReceiveField />
 
     {/* Connect Button */}
-    <div className="mt-4 md:mt-0 flex justify-center px-5">
-      <button className="w-full bg-[#a07fd0] text-white py-3 rounded-full  hover:bg-[#b793ed]">
+    <div className="px-4">
+      <button className="w-full bg-[#a07fd0] text-white py-3 rounded-full hover:bg-[#b793ed]">
         Connect
       </button>
+        </div>
     </div>
-  </div>
 );
-
 
 // HistoryContent Component
 const HistoryContent: React.FC = () => (
@@ -337,7 +355,7 @@ const Section: React.FC = () => {
 
   return (
     <div className="w-full md:h-screen md:flex md:justify-center items-center">
-  <div className="w-full md:max-w-sm mt-5 md:mt-0 md:h-[85%] bg-[#17191C] text-white rounded-3xl mx-auto md:pt-5 relative overflow-hidden">
+  <div className="w-full md:max-w-sm mt-5 md:mt-0 md:h-[88%] bg-[#17191C] text-white rounded-3xl mx-auto md:pt-5 relative overflow-hidden">
     {/* Settings and Clock Buttons */}
     <div className="flex justify-end space-x-1">
       <button
