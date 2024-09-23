@@ -5,6 +5,7 @@ import Axelar from "../public/Axelar.png";
 export default function Footer() {
   return (
     <div className="md:mx-14 my-10 mt-28 py-14 space-y-8 text-black md:rounded-[2rem] bg-gray-100">
+      
       {/* -----Form for smaller screens------- */}
       <div className="mx-7 rounded-3xl shadow-sm md:hidden bg-white">
         <form className="p-5 space-y-14">

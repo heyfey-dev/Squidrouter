@@ -69,7 +69,7 @@ const PayField: React.FC = () => {
         onMouseEnter={() => setIsPayModalOpen(true)}
         onMouseLeave={() => setIsPayModalOpen(false)}
       >
-        <span className="w-fit hover:bg-[#2C2F36] p-1 rounded-2xl text-xs text-gray-400">Pay</span>
+        <span className="w-fit hover:bg-[#2C2F36] p-1 rounded-2xl md:text-xs text-gray-400">Pay</span>
         {isPayModalOpen && <Modal message="Select payment method" />}
       </div>
 
@@ -91,8 +91,8 @@ const PayField: React.FC = () => {
           <Image src={CryptoSwap} alt="Crypto Swap" width={17} height={17} />
           <span>$0</span>
         </div>
-        <p className="flex gap-2 items-center">
-          Balance: 0<span className="bg-purple-200 p-1 px-3 text-xs rounded-full">Max</span>
+        <p className="flex gap-2 items-center text-lg">
+          Balance: 0<span className="bg-gray-400 p-1 px-3 text-sm md:text-xs text-gray-800 rounded-full">Max</span>
         </p>
       </div>
     </div>
@@ -135,8 +135,8 @@ const ReceiveField: React.FC = () => {
           <Image src={CryptoSwap} alt="Crypto Swap" width={15} height={15} />
           <span>$0</span>
         </div>
-        <p className="flex gap-2 items-center">
-          Balance: 0<span className="bg-purple-200 p-1 px-3 text-xs rounded-full">Max</span>
+        <p className="flex gap-2 items-center text-lg">
+          Balance: 0<span className="bg-gray-500 p-1 px-3 text-sm md:text-xs text-gray-900 rounded-full">Max</span>
         </p>
       </div>
     </div>
@@ -145,13 +145,14 @@ const ReceiveField: React.FC = () => {
 
 // Main Swap Component
 const SwapContent: React.FC = () => (
-  <div className="">
+  <div className="border ">
     {/* Pay Section */}
     <PayField />
 
     {/* Arrow Divider */}
     <div className="flex justify-center my-2">
-      <IoIosArrowRoundDown size={24} className="text-gray-200" />
+      <IoIosArrowRoundDown size={24} className="hidden lg:flex text-gray-200" />
+      <IoIosArrowRoundDown size={36} className="lg:hidden text-gray-200" />
     </div>
 
     {/* Receive Section */}
@@ -159,7 +160,7 @@ const SwapContent: React.FC = () => (
 
     {/* Connect Button */}
     <div className="px-4">
-      <button className="w-full bg-[#a07fd0] text-white py-3 rounded-full hover:bg-[#b793ed]">
+      <button className="w-full bg-[#a07fd0] text-xl lg:text-sm text-white py-4 md:py-3 rounded-full hover:bg-[#b793ed]">
         Connect
       </button>
         </div>
@@ -355,20 +356,22 @@ const Section: React.FC = () => {
 
   return (
     <div className="w-full md:h-screen md:flex md:justify-center items-center">
-  <div className="w-full md:max-w-sm mt-5 md:mt-0 md:h-[88%] bg-[#17191C] text-white rounded-3xl mx-auto md:pt-5 relative overflow-hidden">
+  <div className="w-full md:max-w-sm mt-5 md:mt-0 h-full md:h-[88%] bg-[#17191C] text-white rounded-3xl mx-auto md:pt-5 relative overflow-hidden">
     {/* Settings and Clock Buttons */}
-    <div className="flex justify-end space-x-1">
+    <div className="flex justify-end space-x-1 mx-5 md:mx-0 my-3 md:my-0">
       <button
         onClick={() => setCurrentView('history')}
-        className="text-[#B1B6BF] w-14 h-8 flex justify-center items-center rounded-2xl bg-[#272d36] hover:bg-gray-700"
+        className="text-[#B1B6BF] w-16 md:w-14 h-10 md:h-8 flex justify-center items-center rounded-3xl md:rounded-2xl bg-[#272d36] hover:bg-gray-700"
       >
-        <AiOutlineClockCircle size={18} />
+        <AiOutlineClockCircle size={18} className="hidden md:flex"/>
+        <AiOutlineClockCircle size={22} className='md:hidden'/>
       </button>
       <button
         onClick={() => setCurrentView('settings')}
-        className="text-[#B1B6BF] w-14 h-8 flex justify-center items-center rounded-2xl bg-[#272d36] hover:bg-gray-500"
+        className="text-[#B1B6BF] w-16 md:w-14 h-10 md:h-8 flex justify-center items-center rounded-3xl md:rounded-2xl bg-[#272d36] hover:bg-gray-500"
       >
-        <TbSettings2 size={18} />
+        <TbSettings2 size={18} className="hidden md:flex"/>
+        <TbSettings2 size={22}  className='md:hidden'/>
       </button>
     </div>
     
@@ -378,7 +381,7 @@ const Section: React.FC = () => {
         <IoMdArrowBack size={24} />
       </button>
     ) : (
-      <h2 className="text-2xl text-gray-300 font-medium px-5 pt-2 md:py-0 mb-2 md:mb-4">Swap</h2>
+      <h2 className="text-4xl md:text-2xl text-gray-300 font-medium px-5 pt-2 py-2 md:py-0 mb-2 md:mb-4">Swap</h2>
     )}
 
     {/* Render content based on currentView */}
