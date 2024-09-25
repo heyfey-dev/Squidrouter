@@ -83,12 +83,12 @@ const PayField: React.FC = () => {
         icon={<span className="text-yellow-500">▣</span>}
       />
 
-      {/* <SquidWidget
+      <SquidWidget
         config={{
           integratorId: "kurokeme-cb998bbb-5acb-4493-9765-2899a30b0c38",
           companyName: "Squid",
         }}
-      /> */}
+      />
 
       {/* Input Field */}
       <input
