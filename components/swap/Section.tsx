@@ -1,6 +1,8 @@
 "use client"
 
-import React, { useState } from 'react';
+import { Squid } from "@0xsquid/sdk";
+
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Sidebar from "./Sidebar";
 
@@ -55,8 +57,25 @@ const CurrencySelect = ({ currency, icon }: { currency: string; icon: React.Reac
   </div>
 );
 
+
+useEffect(() => {
+  const initializeSquid = async () => {
+    const squid = new Squid({
+      baseUrl: "https://v2.api.squidrouter.com",
+      integratorId: "cb998bbb-5acb-4493-9765-2899a30b0c38"
+    });
+    await squid.init();
+    console.log("Squid inited");
+  };
+  initializeSquid();
+}, []);
+
 // PayField Component
 const PayField: React.FC = () => {
+
+
+
+  
   const [payValue, setPayValue] = useState<string>('');
   const [payCurrency, setPayCurrency] = useState<string>('BNB'); // Default currency
   const [isPayModalOpen, setIsPayModalOpen] = useState<boolean>(false); // Modal state
