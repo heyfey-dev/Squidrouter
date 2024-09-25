@@ -1,11 +1,7 @@
-"use client"
+"use client";
 
-import { Squid } from "@0xsquid/sdk";
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Sidebar from "./Sidebar";
-
 
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { TbSettings2 } from "react-icons/tb";
@@ -16,15 +12,14 @@ import { FiExternalLink } from "react-icons/fi";
 import { CiDollar } from "react-icons/ci";
 import { BsArrowReturnRight } from "react-icons/bs";
 
-
 import Slippage from "/public/swap/slippage.svg";
 import Star from "/public/swap/star.svg";
-import CryptoSwap from "/public/swap/cryptoSwap.svg"
-
+import CryptoSwap from "/public/swap/cryptoSwap.svg";
+import { SquidWidget } from "@0xsquid/widget";
 
 // Define types
-type Currency = 'BNB' | 'POL';
-type ViewType = 'swap' | 'history' | 'settings';
+type Currency = "BNB" | "POL";
+type ViewType = "swap" | "history" | "settings";
 
 interface CurrencySelectProps {
   currency: Currency;
@@ -40,7 +35,6 @@ interface SettingsContentProps {
   onClose: () => void;
 }
 
-
 // Modal Component (Smaller and positioned above labels)
 const Modal = ({ message }: { message: string }) => (
   <div className="absolute top-[-27px] -left-1 bg-[#2C2F36] rounded-2xl w-fit p-1 px-3 text-gray-400 z-10 shadow-xl">
@@ -49,7 +43,13 @@ const Modal = ({ message }: { message: string }) => (
 );
 
 // CurrencySelect Component
-const CurrencySelect = ({ currency, icon }: { currency: string; icon: React.ReactNode }) => (
+const CurrencySelect = ({
+  currency,
+  icon,
+}: {
+  currency: string;
+  icon: React.ReactNode;
+}) => (
   <div className="flex items-center bg-[#272d36] text-[#B1B6BF] rounded-full px-3 py-1 cursor-pointer hover:bg-gray-700">
     {icon}
     <span className="ml-2 font-semibold">{currency}</span>
@@ -57,27 +57,10 @@ const CurrencySelect = ({ currency, icon }: { currency: string; icon: React.Reac
   </div>
 );
 
-
-useEffect(() => {
-  const initializeSquid = async () => {
-    const squid = new Squid({
-      baseUrl: "https://v2.api.squidrouter.com",
-      integratorId: "cb998bbb-5acb-4493-9765-2899a30b0c38"
-    });
-    await squid.init();
-    console.log("Squid inited");
-  };
-  initializeSquid();
-}, []);
-
 // PayField Component
 const PayField: React.FC = () => {
-
-
-
-  
-  const [payValue, setPayValue] = useState<string>('');
-  const [payCurrency, setPayCurrency] = useState<string>('BNB'); // Default currency
+  const [payValue, setPayValue] = useState<string>("");
+  const [payCurrency, setPayCurrency] = useState<string>("BNB"); // Default currency
   const [isPayModalOpen, setIsPayModalOpen] = useState<boolean>(false); // Modal state
 
   return (
@@ -88,12 +71,24 @@ const PayField: React.FC = () => {
         onMouseEnter={() => setIsPayModalOpen(true)}
         onMouseLeave={() => setIsPayModalOpen(false)}
       >
-        <span className="w-fit hover:bg-[#2C2F36] p-1 rounded-2xl md:text-xs text-gray-400">Pay</span>
+        <span className="w-fit hover:bg-[#2C2F36] p-1 rounded-2xl md:text-xs text-gray-400">
+          Pay
+        </span>
         {isPayModalOpen && <Modal message="Select payment method" />}
       </div>
 
       {/* Currency Button */}
-      <CurrencySelect currency={payCurrency} icon={<span className="text-yellow-500">▣</span>} />
+      <CurrencySelect
+        currency={payCurrency}
+        icon={<span className="text-yellow-500">▣</span>}
+      />
+
+      <SquidWidget
+        config={{
+          integratorId: "kurokeme-cb998bbb-5acb-4493-9765-2899a30b0c38",
+          companyName: "Squid",
+        }}
+      />
 
       {/* Input Field */}
       <input
@@ -111,7 +106,10 @@ const PayField: React.FC = () => {
           <span>$0</span>
         </div>
         <p className="flex gap-2 items-center text-lg">
-          Balance: 0<span className="bg-gray-400 p-1 px-3 text-sm md:text-xs text-gray-800 rounded-full">Max</span>
+          Balance: 0
+          <span className="bg-gray-400 p-1 px-3 text-sm md:text-xs text-gray-800 rounded-full">
+            Max
+          </span>
         </p>
       </div>
     </div>
@@ -120,8 +118,8 @@ const PayField: React.FC = () => {
 
 // ReceiveField Component
 const ReceiveField: React.FC = () => {
-  const [receiveValue, setReceiveValue] = useState<string>('');
-  const [receiveCurrency, setReceiveCurrency] = useState<string>('POL'); // Default currency
+  const [receiveValue, setReceiveValue] = useState<string>("");
+  const [receiveCurrency, setReceiveCurrency] = useState<string>("POL"); // Default currency
   const [isReceiveModalOpen, setIsReceiveModalOpen] = useState<boolean>(false); // Modal state
 
   return (
@@ -137,7 +135,10 @@ const ReceiveField: React.FC = () => {
       </div>
 
       {/* Currency Button */}
-      <CurrencySelect currency={receiveCurrency} icon={<span className="text-purple-300">∞</span>} />
+      <CurrencySelect
+        currency={receiveCurrency}
+        icon={<span className="text-purple-300">∞</span>}
+      />
 
       {/* Input Field */}
       <input
@@ -155,7 +156,10 @@ const ReceiveField: React.FC = () => {
           <span>$0</span>
         </div>
         <p className="flex gap-2 items-center text-lg">
-          Balance: 0<span className="bg-gray-500 p-1 px-3 text-sm md:text-xs text-gray-900 rounded-full">Max</span>
+          Balance: 0
+          <span className="bg-gray-500 p-1 px-3 text-sm md:text-xs text-gray-900 rounded-full">
+            Max
+          </span>
         </p>
       </div>
     </div>
@@ -182,8 +186,8 @@ const SwapContent: React.FC = () => (
       <button className="w-full bg-[#a07fd0] text-xl lg:text-sm text-white py-4 md:py-3 rounded-full hover:bg-[#b793ed]">
         Connect
       </button>
-        </div>
     </div>
+  </div>
 );
 
 // HistoryContent Component
@@ -200,13 +204,13 @@ const HistoryContent: React.FC = () => (
 
 // SettingsContent Component
 const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
-  const [slippageMode, setSlippageMode] = useState<'Auto' | 'Custom'>('Auto');
+  const [slippageMode, setSlippageMode] = useState<"Auto" | "Custom">("Auto");
   const [customSlippage, setCustomSlippage] = useState<number>(0);
   const [degenMode, setDegenMode] = useState<boolean>(false);
   const [showSlippageModal, setShowSlippageModal] = useState(false);
   const [showDegenModal, setShowDegenModal] = useState(false);
 
-  const handleSlippageModeChange = (mode: 'Auto' | 'Custom') => {
+  const handleSlippageModeChange = (mode: "Auto" | "Custom") => {
     setSlippageMode(mode);
   };
 
@@ -217,16 +221,10 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
   return (
     <div className=" bg-opacity-90 backdrop-blur-lg text-white absolute bottom-0 m-4 left-0 right-0">
       <div className="shadow shadow-gray-400 bg-opacity-45 outline-2 space-y-2 p-4 bg-gray-600 rounded-3xl">
-        
         {/* Slippage Section */}
         <div className="flex items-center justify-between text-sm">
           <div className="gap-2 flex items-center relative">
-            <Image
-              src={Slippage}
-              alt="Crypto Swap"
-              width={20}
-              height={20}
-            />
+            <Image src={Slippage} alt="Crypto Swap" width={20} height={20} />
             <span className="text-sm text-gray-300">Slippage</span>
             <AiFillQuestionCircle
               className="ml-1 text-lg text-gray-500 hover:text-gray-400 cursor-pointer"
@@ -236,21 +234,28 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
             {/* Slippage Modal */}
             {showSlippageModal && (
               <div className="absolute -top-32 -left-5 z-20 w-64 p-3 bg-opacity-40 outline-2 text-xs text-gray-300 bg-gray-600 rounded-3xl shadow-lg">
-                Slippage is the price variation you are willing to accept in the event that the price of the trade changes while it is processing. If the trade fails due to too-low slippage, you will receive axlUSDC on the destination chain.
+                Slippage is the price variation you are willing to accept in the
+                event that the price of the trade changes while it is
+                processing. If the trade fails due to too-low slippage, you will
+                receive axlUSDC on the destination chain.
               </div>
             )}
           </div>
 
           <div className="border border-gray-700 rounded-lg flex">
             <button
-              className={`border border-purple-500 px-2 py-1 text-xs rounded-lg ${slippageMode === 'Auto' ? 'bg-gray-700' : 'bg-gray-800'}`}
-              onClick={() => handleSlippageModeChange('Auto')}
+              className={`border border-purple-500 px-2 py-1 text-xs rounded-lg ${
+                slippageMode === "Auto" ? "bg-gray-700" : "bg-gray-800"
+              }`}
+              onClick={() => handleSlippageModeChange("Auto")}
             >
               Auto
             </button>
             <button
-              className={`px-3 text-xs rounded-lg hover:bg-gray-600 ${slippageMode === 'Custom' ? 'bg-gray-700' : 'bg-gray-800'}`}
-              onClick={() => handleSlippageModeChange('Custom')}
+              className={`px-3 text-xs rounded-lg hover:bg-gray-600 ${
+                slippageMode === "Custom" ? "bg-gray-700" : "bg-gray-800"
+              }`}
+              onClick={() => handleSlippageModeChange("Custom")}
             >
               Custom
             </button>
@@ -258,7 +263,7 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
         </div>
 
         {/* Custom Slippage */}
-        {slippageMode === 'Custom' && (
+        {slippageMode === "Custom" && (
           <div className="flex text-sm text-gray-500 items-center justify-between">
             <div className="gap-2 flex items-center">
               <BsArrowReturnRight />
@@ -274,7 +279,9 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
               <input
                 type="number"
                 value={customSlippage}
-                onChange={(e) => handleCustomSlippageChange(Number(e.target.value))}
+                onChange={(e) =>
+                  handleCustomSlippageChange(Number(e.target.value))
+                }
                 className="w-12 text-center bg-gray-800 outline-none"
               />
               <button
@@ -290,12 +297,7 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
         {/* Degen Mode Section */}
         <div className="flex items-center justify-between">
           <div className="flex gap-1 items-center relative">
-            <Image
-              src={Star}
-              alt="Degen Mode"
-              width={20}
-              height={20}
-            />
+            <Image src={Star} alt="Degen Mode" width={20} height={20} />
             <span className="text-sm text-gray-300">Degen mode</span>
             <AiFillQuestionCircle
               className="ml-1 text-lg text-gray-500 hover:text-gray-400 cursor-pointer"
@@ -305,16 +307,18 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
             {/* Degen Mode Modal */}
             {showDegenModal && (
               <div className="absolute -top-24 -left-4 z-20 w-72 p-3 bg-opacity-75 outline-2 text-xs text-gray-300 bg-gray-600 rounded-3xl shadow-lg">
-              Enable at your own risk! Degen mode allows trades with a price impact over 5%, meaning you risk losing funds if prices shift unfavorably.
-              <a
-                href="https://your-link-here.com"  // Add your link URL here
-                className="text-blue-400 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn more
-              </a>
-            </div>
+                Enable at your own risk! Degen mode allows trades with a price
+                impact over 5%, meaning you risk losing funds if prices shift
+                unfavorably.
+                <a
+                  href="https://your-link-here.com" // Add your link URL here
+                  className="text-blue-400 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn more
+                </a>
+              </div>
             )}
           </div>
 
@@ -356,17 +360,17 @@ const SettingsContent: React.FC<SettingsContentProps> = ({ onClose }) => {
 
 // Main EnhancedSwap Component
 const Section: React.FC = () => {
-  const [currentView, setCurrentView] = useState<ViewType>('swap');
+  const [currentView, setCurrentView] = useState<ViewType>("swap");
 
   const handleClose = () => {
-    setCurrentView('swap');
+    setCurrentView("swap");
   };
 
   const renderContent = () => {
     switch (currentView) {
-      case 'history':
+      case "history":
         return <HistoryContent />;
-      case 'settings':
+      case "settings":
         return <SettingsContent onClose={handleClose} />;
       default:
         return <SwapContent />;
@@ -375,45 +379,46 @@ const Section: React.FC = () => {
 
   return (
     <div className="w-full md:h-screen md:flex md:justify-center items-center">
-  <div className="w-full md:max-w-sm mt-5 md:mt-0 h-full md:h-[88%] bg-[#17191C] text-white rounded-3xl mx-auto md:pt-5 relative overflow-hidden">
-    {/* Settings and Clock Buttons */}
-    <div className="flex justify-end space-x-1 mx-5 md:mx-0 my-3 md:my-0">
-      <button
-        onClick={() => setCurrentView('history')}
-        className="text-[#B1B6BF] w-16 md:w-14 h-10 md:h-8 flex justify-center items-center rounded-3xl md:rounded-2xl bg-[#272d36] hover:bg-gray-700"
-      >
-        <AiOutlineClockCircle size={18} className="hidden md:flex"/>
-        <AiOutlineClockCircle size={22} className='md:hidden'/>
-      </button>
-      <button
-        onClick={() => setCurrentView('settings')}
-        className="text-[#B1B6BF] w-16 md:w-14 h-10 md:h-8 flex justify-center items-center rounded-3xl md:rounded-2xl bg-[#272d36] hover:bg-gray-500"
-      >
-        <TbSettings2 size={18} className="hidden md:flex"/>
-        <TbSettings2 size={22}  className='md:hidden'/>
-      </button>
+      <div className="w-full md:max-w-sm mt-5 md:mt-0 h-full md:h-[88%] bg-[#17191C] text-white rounded-3xl mx-auto md:pt-5 relative overflow-hidden">
+        {/* Settings and Clock Buttons */}
+        <div className="flex justify-end space-x-1 mx-5 md:mx-0 my-3 md:my-0">
+          <button
+            onClick={() => setCurrentView("history")}
+            className="text-[#B1B6BF] w-16 md:w-14 h-10 md:h-8 flex justify-center items-center rounded-3xl md:rounded-2xl bg-[#272d36] hover:bg-gray-700"
+          >
+            <AiOutlineClockCircle size={18} className="hidden md:flex" />
+            <AiOutlineClockCircle size={22} className="md:hidden" />
+          </button>
+          <button
+            onClick={() => setCurrentView("settings")}
+            className="text-[#B1B6BF] w-16 md:w-14 h-10 md:h-8 flex justify-center items-center rounded-3xl md:rounded-2xl bg-[#272d36] hover:bg-gray-500"
+          >
+            <TbSettings2 size={18} className="hidden md:flex" />
+            <TbSettings2 size={22} className="md:hidden" />
+          </button>
+        </div>
+
+        {/* Swap Heading */}
+        {currentView !== "swap" ? (
+          <button onClick={handleClose} className="text-gray-400">
+            <IoMdArrowBack size={24} />
+          </button>
+        ) : (
+          <h2 className="text-4xl md:text-2xl text-gray-300 font-medium px-5 pt-2 py-2 md:py-0 mb-2 md:mb-4">
+            Swap
+          </h2>
+        )}
+
+        {/* Render content based on currentView */}
+        {currentView !== "settings" && renderContent()}
+        {currentView === "settings" && (
+          <>
+            <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+            {renderContent()}
+          </>
+        )}
+      </div>
     </div>
-    
-    {/* Swap Heading */}
-    {currentView !== 'swap' ? (
-      <button onClick={handleClose} className="text-gray-400">
-        <IoMdArrowBack size={24} />
-      </button>
-    ) : (
-      <h2 className="text-4xl md:text-2xl text-gray-300 font-medium px-5 pt-2 py-2 md:py-0 mb-2 md:mb-4">Swap</h2>
-    )}
-
-    {/* Render content based on currentView */}
-    {currentView !== 'settings' && renderContent()}
-    {currentView === 'settings' && (
-      <>
-        <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
-        {renderContent()}
-      </>
-    )}
-  </div>
-</div>
-
   );
 };
 
