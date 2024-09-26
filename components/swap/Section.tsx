@@ -90,7 +90,7 @@ const PayField: React.FC = () => {
       <SquidWidget
         config={{
           integratorId: "kurokeme-cb998bbb-5acb-4493-9765-2899a30b0c38",
-          companyName: "Squid",
+          apiUrl: "https://apiplus.squidrouter.com",
         }}
       />
 
