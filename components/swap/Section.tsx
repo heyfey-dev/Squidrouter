@@ -12,10 +12,10 @@ import { IoIosArrowRoundDown, IoMdArrowBack } from "react-icons/io";
 import { TbSettings2 } from "react-icons/tb";
 
 // Dynamically import SquidWidget to avoid SSR issues
-const SquidWidget = dynamic(
-  () => import("@0xsquid/widget").then((module) => module.SquidWidget),
-  { ssr: false }
-);
+// const SquidWidget = dynamic(
+//   () => import("@0xsquid/widget").then((module) => module.SquidWidget),
+//   { ssr: false }
+// );
 
 import CryptoSwap from "/public/swap/cryptoSwap.svg";
 import Slippage from "/public/swap/slippage.svg";
@@ -87,12 +87,12 @@ const PayField: React.FC = () => {
         icon={<span className="text-yellow-500">▣</span>}
       />
 
-      <SquidWidget
+      {/* <SquidWidget
         config={{
           integratorId: "kurokeme-cb998bbb-5acb-4493-9765-2899a30b0c38",
           companyName: "Squid",
         }}
-      />
+      /> */}
 
       {/* Input Field */}
       <input
