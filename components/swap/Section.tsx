@@ -1,21 +1,19 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import React, { useState } from "react";
 
-import { AiOutlineClockCircle } from "react-icons/ai";
-import { TbSettings2 } from "react-icons/tb";
-import { IoMdArrowBack } from "react-icons/io";
-import { AiFillQuestionCircle } from "react-icons/ai";
-import { IoIosArrowRoundDown } from "react-icons/io";
-import { FiExternalLink } from "react-icons/fi";
-import { CiDollar } from "react-icons/ci";
+import { AiFillQuestionCircle, AiOutlineClockCircle } from "react-icons/ai";
 import { BsArrowReturnRight } from "react-icons/bs";
+import { CiDollar } from "react-icons/ci";
+import { FiExternalLink } from "react-icons/fi";
+import { IoIosArrowRoundDown, IoMdArrowBack } from "react-icons/io";
+import { TbSettings2 } from "react-icons/tb";
 
+import { SquidWidget } from "@0xsquid/widget";
+import CryptoSwap from "/public/swap/cryptoSwap.svg";
 import Slippage from "/public/swap/slippage.svg";
 import Star from "/public/swap/star.svg";
-import CryptoSwap from "/public/swap/cryptoSwap.svg";
-import { SquidWidget } from "@0xsquid/widget";
 
 // Define types
 type Currency = "BNB" | "POL";
