@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 
 import { AiFillQuestionCircle, AiOutlineClockCircle } from "react-icons/ai";
 import { BsArrowReturnRight } from "react-icons/bs";
@@ -10,7 +11,12 @@ import { FiExternalLink } from "react-icons/fi";
 import { IoIosArrowRoundDown, IoMdArrowBack } from "react-icons/io";
 import { TbSettings2 } from "react-icons/tb";
 
-import { SquidWidget } from "@0xsquid/widget";
+// Dynamically import SquidWidget to avoid SSR issues
+const SquidWidget = dynamic(
+  () => import("@0xsquid/widget").then((module) => module.SquidWidget),
+  { ssr: false }
+);
+
 import CryptoSwap from "/public/swap/cryptoSwap.svg";
 import Slippage from "/public/swap/slippage.svg";
 import Star from "/public/swap/star.svg";
