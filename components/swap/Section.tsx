@@ -1,25 +1,22 @@
-// Import necessary modules
-"use client";
-
-import dynamic from "next/dynamic";
 import React from "react";
+import dynamic from "next/dynamic";
 
-// Dynamically import SquidWidget to avoid SSR issues
-const SquidWidget = dynamic(
-  () => import("@0xsquid/widget").then((module) => module.SquidWidget),
-  { ssr: false }
-);
+// Dynamically import the SquidWidget to avoid SSR issues
+const SquidWidget = dynamic(() => import("@0xsquid/widget").then(module => module.SquidWidget), { ssr: false });
 
 const Section: React.FC = () => {
   return (
-    <div className="w-full md:h-screen md:flex md:justify-center items-center">
-      <div className="w-full md:max-w-sm mt-5 md:mt-0 h-full md:h-fit md:my-10 mx-auto relative overflow-hidden">
-        
-        {/* Place the SquidWidget here with your custom configuration */}
+    <div className="w-full h-screen flex justify-center items-center">
+      <div className="border-4 border-red-600 w-full md:max-w-sm mt-5 h-full md:h-fit mx-auto relative">
         <SquidWidget
           config={{
-            integratorId: "squid-swap-widget",
-            companyName: "Custom",
+            integratorId: "kurokeme-cb998bbb-5acb-4493-9765-2899a30b0c38", // Your integrator ID
+            apiUrl: "https://apiplus.squidrouter.com",
+            slippage: 1.5,
+            infiniteApproval: false,
+            enableExpress: true,
+            environment: "mainnet",
+            // Adding style properties conditionally
             style: {
               neutralContent: "#9DA7B1",
               baseContent: "#FFFDFD",
@@ -37,33 +34,10 @@ const Section: React.FC = () => {
               roundedCornerBtn: "999px",
               roundedBox: "20px",
               roundedDropDown: "0px",
+              w: 96,
+              height: "500px",
             },
-            slippage: 1.5,
-            infiniteApproval: false,
-            enableExpress: true,
-            apiUrl: "https://api.squidrouter.com",
-            comingSoonChainIds: [],
-            titles: {
-              swap: "Swap",
-              settings: "Settings",
-              wallets: "Wallets",
-              tokens: "Select Token",
-              chains: "Select Chain",
-              history: "History",
-              transaction: "Transaction",
-              allTokens: "Select Token",
-              destination: "Destination address",
-              depositAddress: "Deposit address",
-              seimetamask: "Important message!",
-            },
-            priceImpactWarnings: {
-              warning: 3,
-              critical: 5,
-            },
-            environment: "mainnet",
-            showOnRampLink: true,
-            defaultTokens: [],
-          }}
+          } as any}
         />
       </div>
     </div>

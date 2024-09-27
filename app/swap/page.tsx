@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -6,7 +6,6 @@ import Sidebar from "../../components/swap/Sidebar";
 import Section from "../../components/swap/Section";
 
 import { FiExternalLink } from "react-icons/fi";
-
 
 const Swap: React.FC = () => {
   const [loading, setLoading] = useState(true); // Loading state
@@ -53,9 +52,10 @@ const Swap: React.FC = () => {
           <Section />
         )}
 
-        <button className="">
-          <FiExternalLink className=""/>
-          <span className="">Get help</span>
+        {/* Get help button positioned at the bottom-right corner */}
+        <button className="hidden md:flex absolute bottom-6 right-6  items-center justify-center px-4 py-2 bg-gray-500 text-white rounded-full shadow-lg">
+          <FiExternalLink className="mr-2" />
+          <span>Get help</span>
         </button>
       </div>
     </div>
@@ -63,4 +63,3 @@ const Swap: React.FC = () => {
 };
 
 export default Swap;
-
