@@ -34,8 +34,8 @@ const Section: React.FC = () => {
               roundedCornerBtn: "999px",
               roundedBox: "20px",
               roundedDropDown: "0px",
-              w: 96,
-              height: "500px",
+              width: "60%",
+              height: "80%",
             },
           } as any}
         />
