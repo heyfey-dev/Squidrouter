@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "/public/swap/squid-icon-white.svg";
+import BlackLogo from "/public/swap/Squid_Icon_Logo_Black.svg"
 
 // -------SVGs---------
 import Smile from "/public/swap/smillie.svg";
@@ -56,10 +57,10 @@ export default function Sidebar() {
                         ${
                           isActive
                             ? "bg-[#6B45A1] text-white"
-                            : "text-gray-300 hover:bg-[#1f2124]"
+                            : "text-gray-700 hover:bg-gray-200"
                         }`}
         >
-          <span className={isActive ? "text-white" : "text-gray-300"}>
+          <span className={isActive ? "text-white" : "text-gray-700"}>
             {icon}
           </span>
           {text}
@@ -72,33 +73,33 @@ export default function Sidebar() {
     <>
       {isExpanded && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-20 z-10"
+          className=" fixed inset-0 bg-white bg-opacity-20 z-10"
           onClick={() => setIsExpanded(false)}
         />
       )}
       <div className="relative z-20 min-h-screen">
         <div
           ref={sidebarRef}
-          className={`fixed top-2 left-2 bg-[#17191C] p-1 font-geistSans rounded-3xl transition-all duration-300 ease-in-out overflow-hidden
-                      ${isExpanded ? "w-60 h-[95%]" : "w-20 h-10"}`}
+          className={`fixed top-2 left-3 px-2 bg-white p-1 font-geistSans rounded-3xl shadow-gray-700 shadow-sm transition-all duration-300 ease-in-out overflow-hidden
+                      ${isExpanded ? "w-60 h-[95%]" : "w-24 h-10 pt-1"}`}
         >
-          <div className="flex items-center justify-between pt-2 px-3 w-full z-20 bg-[#17191C] rounded-3xl">
+          <div className="flex items-center justify-between z-20 rounded-3xl">
             <div className="flex items-center gap-2">
               <div className="flex-shrink-0">
-                <Image src={Logo} alt="Logo" width={25} height={25} />
+                <Image src={BlackLogo} alt="Logo" width={25} height={25} />
               </div>
               {isExpanded && (
-                <span className="text-white text-sm font-medium">Squid</span>
+                <span className="text-gray-500 text-sm font-semibold">Squid</span>
               )}
             </div>
             {isExpanded ? (
               <HiX
-                className="text-xl text-white cursor-pointer"
+                className="ml-2 text-xl text-gray-700 cursor-pointer"
                 onClick={toggleExpand}
               />
             ) : (
               <HiOutlineMenuAlt4
-                className="text-xl text-white cursor-pointer"
+                className="text-3xl text-gray-700 cursor-pointer"
                 onClick={toggleExpand}
               />
             )}
@@ -113,7 +114,7 @@ export default function Sidebar() {
                   text="Home"
                 />
 
-                <h1 className="text-gray-600 text-xs m-2 ml-3">Products</h1>
+                <h1 className="text-gray-400 text-xs m-2 ml-3">Products</h1>
                 <ul>
                   <MenuItem
                     href="/"
@@ -148,7 +149,7 @@ export default function Sidebar() {
                   />
                 </ul>
 
-                <h1 className="text-gray-600 text-xs m-2 ml-3">Learn</h1>
+                <h1 className="text-gray-400 text-xs m-2 ml-3">Learn</h1>
                 <ul>
                   <MenuItem
                     href="/"
@@ -169,7 +170,7 @@ export default function Sidebar() {
                   />
                 </ul>
 
-                <h1 className="text-gray-600 text-xs m-2 ml-3">Social</h1>
+                <h1 className="text-gray-400 text-xs m-2 ml-3">Social</h1>
                 <ul>
                   <MenuItem
                     href="/discord"
@@ -190,7 +191,7 @@ export default function Sidebar() {
                   />
                 </ul>
 
-                <h1 className="text-gray-600 text-xs my-2 ml-3">Developers</h1>
+                <h1 className="text-gray-400 text-xs my-2 ml-3">Developers</h1>
                 <ul>
                   <MenuItem
                     href="/github"
@@ -223,7 +224,7 @@ export default function Sidebar() {
                   />
                 </ul>
 
-                <div className="text-xs text-gray-300 flex justify-between my-10">
+                <div className="text-xs text-gray-500 flex justify-between my-10">
                   <div className="flex gap-3">
                     <h1>Terms</h1>
                     <p>|</p>
