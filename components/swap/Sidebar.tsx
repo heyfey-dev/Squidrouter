@@ -80,8 +80,8 @@ export default function Sidebar() {
       <div className="relative z-20 min-h-screen">
         <div
           ref={sidebarRef}
-          className={`fixed top-2 left-3 px-2 bg-white p-1 font-geistSans rounded-3xl shadow-gray-700 shadow-sm transition-all duration-300 ease-in-out overflow-hidden
-                      ${isExpanded ? "w-60 h-[95%]" : "w-24 h-10 pt-1"}`}
+          className={`fixed top-2 left-3 px-2 bg-white p-1 font-geistSans rounded-3xl shadow-gray-300 shadow-md transition-all duration-300 ease-in-out overflow-hidden
+                      ${isExpanded ? "w-60 h-[95%]" : "w-20 h-10 pt-1 px-2"}`}
         >
           <div className="flex items-center justify-between z-20 rounded-3xl">
             <div className="flex items-center gap-2">
@@ -99,7 +99,7 @@ export default function Sidebar() {
               />
             ) : (
               <HiOutlineMenuAlt4
-                className="text-3xl text-gray-700 cursor-pointer"
+                className="text-2xl text-gray-700 cursor-pointer"
                 onClick={toggleExpand}
               />
             )}
