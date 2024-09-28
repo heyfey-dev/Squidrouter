@@ -1,10 +1,13 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 // Dynamically import the SquidWidget to avoid SSR issues
-const SquidWidget = dynamic(() => import("@0xsquid/widget").then(module => module.SquidWidget), { ssr: false });
+const SquidWidget = dynamic(
+  () => import("@0xsquid/widget").then((module) => module.SquidWidget),
+  { ssr: false }
+);
 
 const Section: React.FC = () => {
   const [loading, setLoading] = useState(true);
