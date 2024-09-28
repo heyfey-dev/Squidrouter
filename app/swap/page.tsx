@@ -2,6 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+
 import Sidebar from "../../components/swap/Sidebar";
 import Section from "../../components/swap/Section";
 
@@ -27,10 +29,12 @@ const Swap: React.FC = () => {
         <Section />
 
         {/* -------Get help button----- */}
-        <button className="hidden md:flex absolute bottom-6 right-6 items-center justify-center px-4 py-2 bg-white text-gray-600 rounded-full shadow-lg">
-          <span className="font-medium">Get help</span>
-          <FiExternalLink className="ml-2 text-gray-700" />
-        </button>
+        <Link href="https://support.squidrouter.com/" passHref>
+          <a className="hidden md:flex absolute bottom-6 right-6 items-center justify-center px-4 py-2 bg-white text-gray-600 rounded-full shadow-lg">
+            <span className="font-medium">Get help</span>
+            <FiExternalLink className="ml-2 text-gray-700" />
+          </a>
+        </Link>
       </div>
     </div>
   );
