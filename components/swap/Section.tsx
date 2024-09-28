@@ -1,21 +1,28 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 // Dynamically import the SquidWidget to avoid SSR issues
-const SquidWidget = dynamic(() => import("@0xsquid/widget").then(module => module.SquidWidget), { ssr: false });
+const SquidWidget = dynamic(
+  () => import("@0xsquid/widget").then((module) => module.SquidWidget),
+  { ssr: false }
+);
 
 const Section: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false); // State to track if it's client-side
 
-  // Simulate loading effect for 2 seconds before showing the Section
   useEffect(() => {
+    // Set a timer to simulate loading effect for 2 seconds before showing the Section
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
 
-    return () => clearTimeout(timer);
+    // Mark that we're on the client side
+    setIsClient(true);
+
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
   }, []);
 
   return (
@@ -32,14 +39,17 @@ const Section: React.FC = () => {
         </div>
       ) : (
         <div className="relative">
-          <SquidWidget
-            config={{
-              integratorId: "kurokeme-cb998bbb-5acb-4493-9765-2899a30b0c38",
-              apiUrl: "https://apiplus.squidrouter.com",
-              slippage: 1.5,
-              enableExpress: true,
-            }}
-          />
+          {/* Only render the SquidWidget if it's on the client side */}
+          {isClient && (
+            <SquidWidget
+              config={{
+                integratorId: "kurokeme-cb998bbb-5acb-4493-9765-2899a30b0c38",
+                apiUrl: "https://apiplus.squidrouter.com",
+                slippage: 1.5,
+                enableExpress: true,
+              }}
+            />
+          )}
         </div>
       )}
     </div>
