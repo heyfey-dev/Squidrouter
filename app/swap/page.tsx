@@ -29,12 +29,11 @@ const Swap: React.FC = () => {
         <Section />
 
         {/* -------Get help button----- */}
-        <Link href="https://support.squidrouter.com/" passHref>
-          <a className="hidden md:flex absolute bottom-6 right-6 items-center justify-center px-4 py-2 bg-white text-gray-600 rounded-full shadow-lg">
-            <span className="font-medium">Get help</span>
-            <FiExternalLink className="ml-2 text-gray-700" />
-          </a>
+        <Link href="https://support.squidrouter.com/" passHref className="hidden md:flex absolute bottom-6 right-6 items-center justify-center px-4 py-2 bg-white text-gray-600 rounded-full shadow-lg" target="_blank" rel="noopener noreferrer">
+          <span className="font-medium">Get help</span>
+          <FiExternalLink className="ml-2 text-gray-700" />
         </Link>
+
       </div>
     </div>
   );

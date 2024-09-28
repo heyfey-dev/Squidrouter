@@ -54,23 +54,13 @@ export default function Sidebar() {
     const isActive = pathname === href;
 
     return (
-      <Link href={href} passHref>
-        <a
-          target={target}
-          rel={rel}
-          className={`flex items-center gap-3 p-2 px-3 text-sm font-geistSans rounded-xl cursor-pointer transition-colors
-                      ${
-                        isActive
-                          ? "bg-[#6B45A1] text-white"
-                          : "text-gray-700 hover:bg-gray-200"
-                      }`}
-        >
-          <span className={isActive ? "text-white" : "text-gray-700"}>
-            {icon}
-          </span>
-          {text}
-        </a>
-      </Link>
+      <Link href={href} target={target} rel={rel} passHref className={`flex items-center gap-3 p-2 px-3 text-sm font-geistSans rounded-xl cursor-pointer transition-colors
+        ${isActive ? "bg-[#6B45A1] text-white" : "text-gray-700 hover:bg-gray-200"}`}>
+<span className={isActive ? "text-white" : "text-gray-700"}>
+{icon}
+</span>
+{text}
+</Link>
     );
   };
 
@@ -255,16 +245,12 @@ export default function Sidebar() {
 
                 <div className="text-xs text-gray-500 flex justify-between my-10">
                 <div className="flex gap-3">
-                  <Link href="/terms" passHref>
-                    <a target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-blue-500">
-                      Terms
-                    </a>
+                  <Link href="/terms" target="_blank" rel="noopener noreferrer" passHref>
+                    <span className="cursor-pointer hover:text-blue-500">Terms</span>
                   </Link>
                   <p>|</p>
-                  <Link href="/privacy" passHref>
-                    <a target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-blue-500">
-                      Privacy
-                    </a>
+                  <Link href="/privacy" target="_blank" rel="noopener noreferrer" passHref>
+                    <span className="cursor-pointer hover:text-blue-500">Privacy</span>
                   </Link>
                 </div>
 
