@@ -1,0 +1,11 @@
+.widgetContainer {
+    border: 4px solid #AB67CB;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .widgetContainer > div {
+    width: 80% !important;
+    height: 80% !important;
+  }

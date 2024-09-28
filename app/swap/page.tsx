@@ -10,13 +10,13 @@ import { FiExternalLink } from "react-icons/fi";
 const Swap: React.FC = () => {
   const [loading, setLoading] = useState(true); // Loading state
 
-  // Simulate loading effect for 2 seconds before showing the Section
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false); // Stop loading after 2 seconds
-    }, 2000);
+      setLoading(false); 
+    }, 1000);
 
-    return () => clearTimeout(timer); // Cleanup timer on component unmount
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -26,8 +26,8 @@ const Swap: React.FC = () => {
         <Image
           src="/swap/squidBg.svg"
           alt="Background"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
           priority={true}
         />
       </div>
@@ -52,8 +52,8 @@ const Swap: React.FC = () => {
           <Section />
         )}
 
-        {/* Get help button positioned at the bottom-right corner */}
-        <button className="hidden md:flex absolute bottom-6 right-6  items-center justify-center px-4 py-2 bg-gray-500 text-white rounded-full shadow-lg">
+        {/* -------Get help button-----*/}
+        <button className="hidden md:flex absolute bottom-6 right-6 items-center justify-center px-4 py-2 bg-gray-500 text-white rounded-full shadow-lg">
           <FiExternalLink className="mr-2" />
           <span>Get help</span>
         </button>
