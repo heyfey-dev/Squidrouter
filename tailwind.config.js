@@ -16,6 +16,9 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        'spin-reverse': 'spin 1s linear infinite reverse',
+      },
     },
   },
   plugins: [],
