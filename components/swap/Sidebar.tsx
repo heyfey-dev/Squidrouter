@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "/public/swap/squid-icon-white.svg";
+import BlackLogo from "/public/swap/Squid_Icon_Logo_Black.svg";
 
 // -------SVGs---------
 import Smile from "/public/swap/smillie.svg";
@@ -24,6 +25,8 @@ import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
 import { FaDiscord, FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { HiOutlineBookOpen } from "react-icons/hi2";
+import { MdLightMode } from "react-icons/md";
+
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -47,24 +50,17 @@ export default function Sidebar() {
     };
   }, []);
 
-  const MenuItem = ({ href, icon, text }) => {
+  const MenuItem = ({ href, icon, text, target, rel }) => {
     const isActive = pathname === href;
+
     return (
-      <Link href={href} passHref>
-        <li
-          className={`flex items-center gap-3 p-2 px-3 text-sm font-geistSans rounded-xl cursor-pointer transition-colors
-                        ${
-                          isActive
-                            ? "bg-[#6B45A1] text-white"
-                            : "text-gray-300 hover:bg-[#1f2124]"
-                        }`}
-        >
-          <span className={isActive ? "text-white" : "text-gray-300"}>
-            {icon}
-          </span>
-          {text}
-        </li>
-      </Link>
+      <Link href={href} target={target} rel={rel} passHref className={`flex items-center gap-3 p-2 px-3 text-sm font-geistSans rounded-xl cursor-pointer transition-colors
+        ${isActive ? "bg-[#6B45A1] text-white" : "text-gray-700 hover:bg-gray-200"}`}>
+<span className={isActive ? "text-white" : "text-gray-700"}>
+{icon}
+</span>
+{text}
+</Link>
     );
   };
 
@@ -72,33 +68,35 @@ export default function Sidebar() {
     <>
       {isExpanded && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-20 z-10"
+          className="fixed inset-0 bg-white bg-opacity-20 z-10"
           onClick={() => setIsExpanded(false)}
         />
       )}
       <div className="relative z-20 min-h-screen">
         <div
           ref={sidebarRef}
-          className={`fixed top-2 left-2 bg-[#17191C] p-1 font-geistSans rounded-3xl transition-all duration-300 ease-in-out overflow-hidden
-                      ${isExpanded ? "w-60 h-[95%]" : "w-20 h-10"}`}
+          className={`fixed top-2 left-3 px-2 bg-white p-1 font-geistSans rounded-3xl shadow-gray-300 shadow-md transition-all duration-300 ease-in-out overflow-hidden
+                      ${isExpanded ? "w-60 h-[95%]" : "w-20 h-10 pt-1 px-2"}`}
         >
-          <div className="flex items-center justify-between pt-2 px-3 w-full z-20 bg-[#17191C] rounded-3xl">
+          <div className="flex items-center justify-between z-20 rounded-3xl">
             <div className="flex items-center gap-2">
               <div className="flex-shrink-0">
-                <Image src={Logo} alt="Logo" width={25} height={25} />
+                <Image src={BlackLogo} alt="Logo" width={25} height={25} />
               </div>
               {isExpanded && (
-                <span className="text-white text-sm font-medium">Squid</span>
+                <span className="text-gray-500 text-sm font-semibold">
+                  Squid
+                </span>
               )}
             </div>
             {isExpanded ? (
               <HiX
-                className="text-xl text-white cursor-pointer"
+                className="ml-2 text-xl text-gray-700 cursor-pointer"
                 onClick={toggleExpand}
               />
             ) : (
               <HiOutlineMenuAlt4
-                className="text-xl text-white cursor-pointer"
+                className="text-2xl text-gray-700 cursor-pointer"
                 onClick={toggleExpand}
               />
             )}
@@ -109,21 +107,25 @@ export default function Sidebar() {
               <nav>
                 <MenuItem
                   href="/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   icon={<Image src={Smile} alt="Home" width={20} height={20} />}
                   text="Home"
                 />
 
-                <h1 className="text-gray-600 text-xs m-2 ml-3">Products</h1>
+                <h1 className="text-gray-400 text-xs m-2 ml-3">Products</h1>
                 <ul>
                   <MenuItem
                     href="/"
-                    icon={
-                      <Image src={Swap} alt="Swap" width={20} height={20} />
-                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    icon={<Image src={Swap} alt="Swap" width={20} height={20} />}
                     text="Swap"
                   />
                   <MenuItem
-                    href="/"
+                    href="https://checkout.squidrouter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={
                       <Image
                         src={Nft}
@@ -132,10 +134,12 @@ export default function Sidebar() {
                         height={18}
                       />
                     }
-                    text="NFT Collection"
+                    text="NFT Checkout"
                   />
                   <MenuItem
-                    href="/"
+                    href="https://classic.squidrouter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={
                       <Image
                         src={SwapClassic}
@@ -148,10 +152,12 @@ export default function Sidebar() {
                   />
                 </ul>
 
-                <h1 className="text-gray-600 text-xs m-2 ml-3">Learn</h1>
+                <h1 className="text-gray-400 text-xs m-2 ml-3">Learn</h1>
                 <ul>
                   <MenuItem
-                    href="/"
+                    href="https://www.squidrouter.com/ecosystem"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={
                       <Image
                         src={Ecosystem}
@@ -163,26 +169,34 @@ export default function Sidebar() {
                     text="Squid Ecosystem"
                   />
                   <MenuItem
-                    href="/"
+                    href="https://www.squidrouter.com/squid-school"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={<HiOutlineBookOpen className="text-xl" />}
                     text="Squid School"
                   />
                 </ul>
 
-                <h1 className="text-gray-600 text-xs m-2 ml-3">Social</h1>
+                <h1 className="text-gray-400 text-xs m-2 ml-3">Social</h1>
                 <ul>
                   <MenuItem
-                    href="/discord"
+                    href="https://discord.com/invite/squidrouter"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={<FaDiscord className="text-xl" />}
                     text="Discord"
                   />
                   <MenuItem
-                    href="/twitter"
+                    href="https://x.com/squidrouter"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={<FaXTwitter className="text-xl" />}
                     text="x.com"
                   />
                   <MenuItem
-                    href="/mirror"
+                    href="https://squid.mirror.xyz"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={
                       <Image src={Mirror} alt="Mirror" width={20} height={20} />
                     }
@@ -190,15 +204,19 @@ export default function Sidebar() {
                   />
                 </ul>
 
-                <h1 className="text-gray-600 text-xs my-2 ml-3">Developers</h1>
+                <h1 className="text-gray-400 text-xs my-2 ml-3">Developers</h1>
                 <ul>
                   <MenuItem
-                    href="/github"
+                    href="https://github.com/0xsquid/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={<FaGithub className="text-xl" />}
                     text="Github"
                   />
                   <MenuItem
-                    href="/"
+                    href="https://docs.squidrouter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={
                       <Image
                         src={Developer}
@@ -210,7 +228,9 @@ export default function Sidebar() {
                     text="Developer Docs"
                   />
                   <MenuItem
-                    href="/"
+                    href="https://v2.widget.squidrouter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     icon={
                       <Image
                         src={Widget}
@@ -223,19 +243,20 @@ export default function Sidebar() {
                   />
                 </ul>
 
-                <div className="text-xs text-gray-300 flex justify-between my-10">
+                <div className="text-xs text-gray-500 flex justify-between my-10">
+                <div className="flex gap-3">
+                  <Link href="/terms" target="_blank" rel="noopener noreferrer" passHref>
+                    <span className="cursor-pointer hover:text-blue-500">Terms</span>
+                  </Link>
+                  <p>|</p>
+                  <Link href="/privacy" target="_blank" rel="noopener noreferrer" passHref>
+                    <span className="cursor-pointer hover:text-blue-500">Privacy</span>
+                  </Link>
+                </div>
+
                   <div className="flex gap-3">
-                    <h1>Terms</h1>
-                    <p>|</p>
-                    <p>Privacy</p>
-                  </div>
-                  <div className="flex gap-3">
-                    <Image
-                      src={Light}
-                      alt="Light mode"
-                      width={20}
-                      height={20}
-                    />
+                    <MdLightMode />
+
                     <Image
                       src={Direction}
                       alt="Direction"

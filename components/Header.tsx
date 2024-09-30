@@ -82,48 +82,48 @@ const Header = () => {
             <div className="mb-4 space-y-2">
               <h3 className="lg:text-xl mb-2">Products</h3>
               <ul className="space-y-2">
-                <li className="flex items-center cursor-pointer hover:text-gray-400">
+              <li className="flex items-center cursor-pointer hover:text-gray-400">
+                <Link href="https://app.squidrouter.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
                   <span className="mr-2">
-                    <Image src={App}
-                      alt="Squid App"
-                      width={30}
-                      height={24}
-                      className="text-black"
-                    />
-                  </span> Squid App
-                </li>
-                <li className="flex items-center cursor-pointer hover:text-gray-400">
+                    <Image src={App} alt="Squid App" width={30} height={24} className="text-black" />
+                  </span>
+                  Squid App
+                </Link>
+              </li>
+              <li className="flex items-center cursor-pointer hover:text-gray-400">
+                <Link href="https://checkout.squidrouter.com/" target="_blank" rel="noopener noreferrer" className="flex items-center">
                   <span className="mr-2">
-                  <Image src={Nft}
-                      alt="Nft"
-                      width={30}
-                      height={24}
-                      className="text-black"
-                    />
-                  </span> Squid NFT Checkout
-                </li>
+                    <Image src={Nft} alt="Nft" width={30} height={24} className="text-black" />
+                  </span>
+                  Squid NFT Checkout
+                </Link>
+              </li>
+
               </ul>
             </div>
             <div className="mb-4 spacey-2">
               <h3 className="md:text-xl mb-2">Social</h3>
               <ul className="space-y-2">
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
-                  <FaDiscord className="ml-1 mr-2 text-xl" /> Discord
+                  <Link href="https://discord.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <FaDiscord className="ml-1 mr-2 text-xl" /> Discord
+                  </Link>
                 </li>
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
-                  <FaXTwitter className="ml-1 mr-2 text-xl" /> X (Twitter)
+                  <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <FaXTwitter className="ml-1 mr-2 text-xl" /> X (Twitter)
+                  </Link>
                 </li>
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
-                  <span className="mr-2">
-                    <Image src={Speaker}
-                      alt="Nft"
-                      width={30}
-                      height={24}
-                      className="text-black"
-                    />
-                  </span> Mirror Blog
+                  <Link href="https://mirror.xyz" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <span className="mr-2">
+                      <Image src={Speaker} alt="Nft" width={30} height={24} className="text-black" />
+                    </span>
+                    Mirror Blog
+                  </Link>
                 </li>
               </ul>
+
             </div>
             <div className="mb-4 space-y-2">
               <h3 className="md:text-xl mb-2">Learn</h3>
