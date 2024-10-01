@@ -78,12 +78,16 @@ export default function Home() {
             <MultiDirectionCarousel />
 
             <div className="block md:flex gap-8 md:gap-20 justify-center items-center my-28 md:my-0 mt-16">
-              <button className="border-2 border-black text-black text-md md:text-xl font-light rounded-full p-2 px-4 md:px-8 hover:text-white hover:bg-black hover:cursor-pointer">
-                Squid Ecosystem
-              </button>
-              <button className="border-2 border-black text-black text-md md:text-xl rounded-full p-2 px-4 md:px-8 hover:text-white hover:bg-black hover:cursor-pointer">
-                Developer Docs
-              </button>
+              <a href="https://www.squidrouter.com/ecosystem">
+                <button className="border-2 border-black text-black text-md md:text-xl font-light rounded-full p-2 px-4 md:px-8 hover:text-white hover:bg-black hover:cursor-pointer">
+                  Squid Ecosystem
+                </button>
+              </a>
+              <a href="https://docs.squidrouter.com/">
+                <button className="border-2 border-black text-black text-md md:text-xl rounded-full p-2 px-4 md:px-8 hover:text-white hover:bg-black hover:cursor-pointer">
+                  Developer Docs
+                </button>
+              </a>
             </div>
           </div>
         </div>

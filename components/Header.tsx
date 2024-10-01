@@ -7,10 +7,10 @@ import Link from "next/link";
 // ------IMAGES---------
 import Black_Logo from "/public/Squid_Icon_Logo_Black.svg";
 import App from "/public/squid_icons/squid_app.svg";
-import Nft from "/public/squid_icons/nft.svg"
-import Developer from "/public/squid_icons/devDocs.svg"
-import Ecosystem from "/public/squid_icons/ecosystem.svg"
-import Speaker from "/public/squid_icons/speaker.svg"
+import Nft from "/public/squid_icons/nft.svg";
+import Developer from "/public/squid_icons/devDocs.svg";
+import Ecosystem from "/public/squid_icons/ecosystem.svg";
+import Speaker from "/public/squid_icons/speaker.svg";
 
 // icons
 import { RiMenuFill, RiCloseLine } from "react-icons/ri";
@@ -28,9 +28,9 @@ const Header = () => {
     };
 
     checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
+    window.addEventListener("resize", checkIfMobile);
 
-    return () => window.removeEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -71,7 +71,11 @@ const Header = () => {
       </div>
 
       {isOpen && (
-        <div className={`w-full md:w-[35%] absolute top-0 left-0 text-black bg-white md:rounded-3xl p-7 shadow-lg z-50 ${isMobile ? 'h-screen overflow-y-auto' : 'md:top-20 md:left-20'}`}>
+        <div
+          className={`w-full md:w-[35%] absolute top-0 left-0 text-black bg-white md:rounded-3xl p-7 shadow-lg z-50 ${
+            isMobile ? "h-screen overflow-y-auto" : "md:top-20 md:left-20"
+          }`}
+        >
           <button
             onClick={toggleMenu}
             className="absolute top-4 right-4 text-3xl text-black hover:text-gray-600 lg:hidden"
@@ -82,55 +86,92 @@ const Header = () => {
             <div className="mb-4 space-y-2">
               <h3 className="lg:text-xl mb-2">Products</h3>
               <ul className="space-y-2">
-              <li className="flex items-center cursor-pointer hover:text-gray-400">
-                <Link href="https://app.squidrouter.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                  <span className="mr-2">
-                    <Image src={App} alt="Squid App" width={30} height={24} className="text-black" />
-                  </span>
-                  Squid App
-                </Link>
-              </li>
-              <li className="flex items-center cursor-pointer hover:text-gray-400">
-                <Link href="https://checkout.squidrouter.com/" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                  <span className="mr-2">
-                    <Image src={Nft} alt="Nft" width={30} height={24} className="text-black" />
-                  </span>
-                  Squid NFT Checkout
-                </Link>
-              </li>
-
+                <li className="flex items-center cursor-pointer hover:text-gray-400">
+                  <Link href="/swap" className="flex items-center">
+                    <span className="mr-2">
+                      <Image
+                        src={App}
+                        alt="Squid App"
+                        width={30}
+                        height={24}
+                        className="text-black"
+                      />
+                    </span>
+                    Squid App
+                  </Link>
+                </li>
+                <li className="flex items-center cursor-pointer hover:text-gray-400">
+                  <Link
+                    href="https://checkout.squidrouter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center"
+                  >
+                    <span className="mr-2">
+                      <Image
+                        src={Nft}
+                        alt="Nft"
+                        width={30}
+                        height={24}
+                        className="text-black"
+                      />
+                    </span>
+                    Squid NFT Checkout
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="mb-4 spacey-2">
               <h3 className="md:text-xl mb-2">Social</h3>
               <ul className="space-y-2">
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
-                  <Link href="https://discord.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <Link
+                    href="https://discord.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center"
+                  >
                     <FaDiscord className="ml-1 mr-2 text-xl" /> Discord
                   </Link>
                 </li>
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
-                  <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <Link
+                    href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center"
+                  >
                     <FaXTwitter className="ml-1 mr-2 text-xl" /> X (Twitter)
                   </Link>
                 </li>
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
-                  <Link href="https://mirror.xyz" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <Link
+                    href="https://mirror.xyz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center"
+                  >
                     <span className="mr-2">
-                      <Image src={Speaker} alt="Nft" width={30} height={24} className="text-black" />
+                      <Image
+                        src={Speaker}
+                        alt="Nft"
+                        width={30}
+                        height={24}
+                        className="text-black"
+                      />
                     </span>
                     Mirror Blog
                   </Link>
                 </li>
               </ul>
-
             </div>
             <div className="mb-4 space-y-2">
               <h3 className="md:text-xl mb-2">Learn</h3>
               <ul className="space-y-2">
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
                   <span className="mr-1">
-                  <Image src={Ecosystem}
+                    <Image
+                      src={Ecosystem}
                       alt="Ecosystem"
                       width={30}
                       height={24}
@@ -141,7 +182,7 @@ const Header = () => {
                 </li>
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
                   <span className="ml-1 mr-2">
-                    <HiOutlineBookOpen className="text-xl"/>
+                    <HiOutlineBookOpen className="text-xl" />
                   </span>{" "}
                   Squid School
                 </li>
@@ -155,12 +196,14 @@ const Header = () => {
                 </li>
                 <li className="flex items-center cursor-pointer hover:text-gray-400">
                   <span className="mr-2">
-                  <Image src={Developer}
+                    <Image
+                      src={Developer}
                       alt="Developer Documents"
                       width={30}
                       className="text-black"
                     />
-                  </span> Developer Docs
+                  </span>{" "}
+                  Developer Docs
                 </li>
                 <li className="flex items-cent cursor-pointer hover:text-gray-400">
                   <span className="mr-2">
@@ -185,10 +228,10 @@ const Header = () => {
             </ul>
           </div>
           <Link href="/swap">
-          <button className="border border-black text-black text-lg rounded-full p-2 px-6 hover:text-white hover:bg-black hover:cursor-pointer lg:hidden mt-4">
-            Swap
-          </button>
-        </Link>
+            <button className="border border-black text-black text-lg rounded-full p-2 px-6 hover:text-white hover:bg-black hover:cursor-pointer lg:hidden mt-4">
+              Swap
+            </button>
+          </Link>
         </div>
       )}
     </div>
