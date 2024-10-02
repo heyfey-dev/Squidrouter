@@ -37,7 +37,7 @@ const Section: React.FC = () => {
         <div className="relative">
           <SquidWidget
             config={{
-              integratorId: "kurokeme-cb998bbb-5acb-4493-9765-2899a30b0c38",
+              integratorId: "kuros-163bd901-3291-423a-b9bf-3be873ad2470",
               apiUrl: "https://apiplus.squidrouter.com",
               slippage: 1.5,
               enableExpress: true,
